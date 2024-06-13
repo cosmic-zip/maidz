@@ -46,7 +46,7 @@ def key_value(term: str, args: list):
             if index + 1 >= len(args):
                 puts("Incomplete key-value constrain :: return empty")
                 return ""
-            print(args[index +1])
+            # print(args[index +1])
             return args[index +1]
 
     puts(f"no value found for key: {term} :: return empty")
@@ -55,15 +55,20 @@ def key_value(term: str, args: list):
     
 def query(data: dict, args: list):
     
+    name = ""
+    content = ""
+    description = ""
     pattern = r'\s*@@(\w+)\s*'
-    
-    content = None
+
     for ctn in data:
         if ctn["name"] == args[1]:
             content = ctn["command"]
-    
+            name = ctn["name"]
+            description = ctn["description"]
+
     if not content:
         puts(f"bind not found for {args[1]}")
+        return None
     
     
     matches = re.findall(pattern, content)
@@ -72,11 +77,17 @@ def query(data: dict, args: list):
         value = key_value(f"--{key}", args)
         content = content.replace(f'@@{key}', value)
     
-    print(content)
-    return content
+    # print(content)
+    return {
+        "name": name,
+        "command": content,
+        "description": description
+    }
     
-def exec(args: list):
-    pass
+def exec(command: str) -> int:
+    puts(command["name"])
+    print(command["command"])
+    return 1
 
 def exec_batch(chunk: dict, args: list, delay: int = 0):
 
@@ -96,20 +107,29 @@ def manual():
         puts(d['description'])
         print(f"\n\t{d['command']}\n")
 
-if __name__ == '__main__':
-
-    args = sys.argv
-
-    if len(args) > 2:
+def shell(args):
+    
+    if len(args) < 2:
         sakuya()
+        return 255
     
     if args[1] == "manual":
         manual()
     elif args[1] == "sakuya":
         sakuya()
-    elif: args[1] == "query":
+    elif args[1] == "query":
         data = import_bank()
-        query(data, args)
+        query(data["general"], args)
     else: 
+        data = import_bank()
+        out = exec(query(data["general"], args))
+        return out
+
+    return 0
+
+if __name__ == '__main__': 
+    shell(sys.argv)
+
+
 
 
