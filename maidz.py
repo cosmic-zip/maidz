@@ -1,6 +1,10 @@
+#!/usr/bin/env python3
 import json, os, sys, time, re
 
-
+def sakuya():
+    os.system("chafa -s 90x90 sakuya_izayoi.png")
+    print("\n\033[1m\t[maidz] Cybersecurity companion\n\tUse maidz help to see all options\033[0m\n")
+    
 def import_bank():
     try:
         with open("bank.json", "r") as bank:
@@ -74,4 +78,18 @@ def manual():
 
 if __name__ == '__main__':
 
-    manual()
+    args = sys.argv
+
+    if len(args) > 2:
+        sakuya()
+    
+    if args[1] == "manual":
+        manual()
+    elif args[1] == "sakuya":
+        sakuya()
+    elif: args[1] == "query":
+        data = import_bank()
+        query(data, args)
+    else: 
+        
+
