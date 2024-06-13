@@ -1,0 +1,66 @@
+import json, os, sys, time, re
+
+
+def import_bank():
+    try:
+        with open("bank.json", "r") as bank:
+            return json.load(bank)
+    except json.JSONDecodeError as e:
+        print(f"JSON::ERROR {e}")
+
+def puts(string: str):
+    print(f"[{string}]")
+
+def key_value(term: str, args: list):
+
+
+    if len(args) < 1:
+        print("args are to small")
+        
+    for index, item in enumerate(args):
+        if item == term:
+            if index + 1 >= len(args):
+                puts("Incomplete key-value constrain :: return empty")
+                return ""
+            print(args[index +1])
+            return args[index +1]
+
+    puts(f"no value found for key: {term} :: return empty")
+    return ""
+    
+    
+def query(data: dict, args: list):
+    
+    pattern = r'\s*@@(\w+)\s*'
+    
+    content = None
+    for ctn in data:
+        if ctn["name"] == args[1]:
+            content = ctn["command"]
+    
+    if not content:
+        puts(f"bind not found for {args[1]}")
+    
+    
+    matches = re.findall(pattern, content)
+    for match in matches:
+        key = match.strip()
+        value = key_value(f"--{key}", args)
+        content = content.replace(f'@@{key}', value)
+    
+    print(content)
+    return content
+    
+def exec(args: list):
+    pass
+
+def exec_batch(chunk: dict, args: list):
+
+    for q in chunk
+        out = query(chunk, args)
+        print(out)
+
+
+if __name__ == '__main__':
+
+    query(sys.argv)
