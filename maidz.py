@@ -9,7 +9,7 @@ def import_bank():
         print(f"JSON::ERROR {e}")
 
 def puts(string: str):
-    print(f"[{string}]")
+    print(f"\033[1m🟣 {string}\033[0m")
 
 def key_value(term: str, args: list):
 
@@ -54,13 +54,24 @@ def query(data: dict, args: list):
 def exec(args: list):
     pass
 
-def exec_batch(chunk: dict, args: list):
+def exec_batch(chunk: dict, args: list, delay: int = 0):
 
-    for q in chunk
+    for q in chunk:
         out = query(chunk, args)
+        if delay:
+            time.sleep(delay)
         print(out)
 
+def manual():
+
+    data = import_bank()
+    data = data["general"]
+
+    for d in data:
+        puts(d['name'])
+        puts(d['description'])
+        print(f"\n\t{d['command']}\n")
 
 if __name__ == '__main__':
 
-    query(sys.argv)
+    manual()
