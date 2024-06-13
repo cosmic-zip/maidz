@@ -417,5 +417,24 @@
             "name": "extras.sitemap",
             "command": "curl -sS -L https://@@domain/sitemap.xml"
         }
+    ],
+    "deps": [
+        "nmap",
+        "dirb",
+        "dnsenum",
+        "libc-bin",
+        "iproute2",
+        "xxd",
+        "iptables",
+        "coreutils",
+        "wget",
+        "curl",
+        "dnsutils",
+        "traceroute",
+        "openssl",
+        "openssh-server",
+        "xattr",
+        "libimage-exiftool-perl",
+        "tor"
     ]
 }
