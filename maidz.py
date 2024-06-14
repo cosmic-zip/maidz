@@ -107,6 +107,13 @@ def manual():
         puts(d['description'])
         print(f"\n\t{d['command']}\n")
 
+def install_deps():
+    deps = import_bank()
+    deps = deps["deps"]
+    for pkg in deps:
+        puts(f"PKG :: {pkg}")
+        os.system(f"sudo apt install {pkg} -y")
+
 def shell(args):
     
     if len(args) < 2:
@@ -117,6 +124,8 @@ def shell(args):
         manual()
     elif args[1] == "sakuya":
         sakuya()
+    elif args[1] == "install":
+        install_deps()
     elif args[1] == "query":
         data = import_bank()
         query(data["general"], args)
