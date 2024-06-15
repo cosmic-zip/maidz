@@ -1,6 +1,6 @@
-Cybersecurity - /sec/ guide
+# Cybersecurity - /sec/ guide & Cosmic
 
-Contents
+**Contents**
 
     • 1 Introduction
         ◦ 1.1 OPSEC
@@ -97,107 +97,145 @@ Contents
 
 But OPSEC can apply both to Blue team and Red team, this guide will cover the purple path.
 
-1. The Red Team is a group that simulates an attack against a system or organization in order to identify vulnerabilities and weaknesses. They act as malicious actors, using various tactics such as social engineering, phishing attacks, and exploiting software bugs to breach security measures.
+1. **The Red Team **is a group that simulates an attack against a system or organization in order to identify vulnerabilities and weaknesses. They act as malicious actors, using various tactics such as social engineering, phishing attacks, and exploiting software bugs to breach security measures.
 
-2. The Blue Team, on the other hand, consists of individuals responsible for defending systems and networks from potential threats. Their primary objective is to protect sensitive information and maintain operational security. To do this, they continuously monitor network traffic, analyze data, and implement necessary countermeasures to thwart any attempts made by Red Teams or real-world attackers.
+2. **The Blue Team**, on the other hand, consists of individuals responsible for defending systems and networks from potential threats. Their primary objective is to protect sensitive information and maintain operational security. To do this, they continuously monitor network traffic, analyze data, and implement necessary countermeasures to thwart any attempts made by Red Teams or real-world attackers.
 
-3. A Purple Team is a unique approach to cybersecurity that combines both Red (offensive) and Blue (defensive) teams within an organization. The primary goal of a Purple Team is to improve overall security posture by conducting simulated attacks and defenses against each other in a controlled environment.
+3. **A Purple Team** is a unique approach to cybersecurity that combines both Red (offensive) and Blue (defensive) teams within an organization. The primary goal of a Purple Team is to improve overall security posture by conducting simulated attacks and defenses against each other in a controlled environment.
+
+**Mention to PTFM (Purple team field manual) and RTFM (Red team field manual) both are exelente and pratical book.**
 
 Now, a little more formalities, i have created some cybersecurity frameworks along my career, they are basically and recipe of tools and procedures, also include documentation and recommendations for organizations and individuals. Here i will write the most common things.
 
-Purple Team OPSEC Framework
-1. Physical Security
+**Purple Team OPSEC Framework**
 
+1. Physical Security
+   
     Doors and Locks:
+   
         Secure all entry points with high-quality locks.
         Implement access control systems.
+   
     Keys Management:
+   
         Use keycards or biometric access.
         Regularly audit key access logs.
+   
     CCTV Monitoring:
+   
         Install cameras at strategic points.
         Monitor and record footage continuously.
 
 2. Digital Self-Defense
-
+   
     Encrypted Communications:
+   
         Use end-to-end encryption for all communications.
+   
     Software Updates:
+   
         Regularly update all software and systems.
+   
     Strong Passwords and MFA:
+   
         Enforce unique, strong passwords and multi-factor authentication.
+   
     Anonymity Tools:
+   
         Utilize Tor and VPNs for anonymizing internet activity.
+   
     Open-Source Systems:
+   
         Deploy Linux and BSD for enhanced security.
+   
     Ad and Tracker Blocking:
+   
         Use uBlock Origin, SponsorBlock, and hosts file from StevenBlack.
+   
     Network Management:
+   
         Implement Pi-hole and NetGuard for network-wide protection.
 
 3. Scanning
-
+   
     Internal and External Scans:
+   
         Perform regular vulnerability scans using tools like Nmap and OpenVAS.
+   
     Penetration Testing:
+   
         Conduct white, gray, and black box testing periodically.
 
 4. Exploitation
-
+   
     Exploitation Tools:
+   
         Use Metasploit and custom scripts to test vulnerabilities.
+   
     Targeted Exploits:
+   
         Focus on high-risk areas identified in scans.
 
 5. Persistence
-
+   
     Maintaining Access:
+   
         Develop methods to maintain access post-exploitation (backdoors, rootkits).
+   
     Privilege Escalation:
+   
         Employ techniques to escalate privileges and gain deeper system control.
 
 6. Documentation and Improvement
-
+   
     Log Findings:
+   
         Document all vulnerabilities, exploits, and penetration test results.
+   
     Remediation Steps:
+   
         Provide clear recommendations for patching and improving security.
+   
     Continuous Improvement:
+   
         Regularly update practices based on new threats and vulnerabilities.
 
-## Digital surveillance self-defense
+# Digital surveillance self-defense
 
 Digital surveillance self-defense uses tools and practices to protect privacy online. Key measures include encrypted communications, regular software updates, strong unique passwords with multi-factor authentication, and using Tor (or alternatives protocols) for anonymity. Open-source systems like Linux and BSD offer better security and privacy.
 
-Use pup sockets, ad blockers, and host file blockers to guard against adware and malware (don't work with DNSSEC), especially on risky sites like porn, unknown domains, and link shorteners. Disable unnecessary permissions for all apps, limit personal info sharing like real name, photos, locations, and use anti-tracking extensions to further reduce surveillance risks.
+Use pup sockets, ad blockers, and host file blockers to guard against adware and malware (don't work with **DNSSEC**), especially on risky sites like porn, unknown domains, and link shorteners. Disable unnecessary permissions for all apps, limit personal info sharing like real name, photos, locations, and use anti-tracking extensions to further reduce surveillance risks.
 
 Tools for Digital Self-Defense
 
-* uBlock Origin: Blocks ads and trackers.
-* SponsorBlock: Skips sponsored segments in YouTube videos.
-* Hosts (StevenBlack): Blocks malicious domains at the system level.
-* NetGuard: Manages network access per app to block unwanted connections.
+* **uBlock Origin**: Blocks ads and trackers.
 
-**Notable tool: Pi-hole**
+* **SponsorBlock**: Skips sponsored segments in YouTube videos.
 
-Pi-hole is a powerful network-wide ad blocker that acts as a DNS sinkhole. It filters out unwanted content by blocking ads, trackers, and malicious domains at the network level, protecting every device connected to your home network.
+* **Hosts** (StevenBlack): Blocks malicious domains at the system level.
 
+* **NetGuard**: Manages network access per app to block unwanted connections.
 
-## Basic Considerations 
+*  **Pi-hole**Pi-hole is  network-wide ad blocker that acts as a DNS sinkhole. It filters out unwanted content by blocking ads, trackers, and malicious domains at the network level, protecting every device connected to your home network.
+
+* ﻿**Tails** is a live operating system that prioritizes user privacy and security by routing internet traffic through the Tor network. It's built on Debian Linux with free software. Bootable from various devices without installation, Tails offers keepass and more usefull software out of box.
+
+* **Qubes OS** Qubes OS is a security-centric operating system that uses Fedora as its default OS and isolates tasks into separate virtual machines, or "qubes," using the Xen hypervisor. It includes a dedicated network qube that acts as a network router, isolating network traffic from other qubes to enhance security.
+
+## Basic Considerations
 
     TODO
 
+# BIOS-Passwords
 
-## BIOS-Passwords
-
-For the physical security of your data you should always employ encrypted drives. But before we get
-to that make sure you set strong passwords in BIOS for both starting up and modifying the BIOS- settings. Also make sure to disable boot for any media other than your hard drive. Encryption
+For the physical security of your data you should always employ encrypted drives. But before we get to that make sure you set strong passwords in BIOS for both starting up and modifying the BIOS- settings. Also make sure to disable boot for any media other than your hard drive. Encryption
 
 With this is easy. In the installation you can simply choose to use an encrypted LVM. (For those of you who missed that part on installation and would still like to use an encrypted partition withouth having to reinstall: use these instructions to get the job done.) For other data, e.g. data you store on transportable media you can use TrueCrypt - which is better than e.g. dmcrypt for portable media since it is portable, too. You can put a folder with TrueCrypt for every OS out there on to the unencrypted part of your drive and thus make sure you can access the files everywhere you go.
 This is how it is done:
 
-Encryption
-Making TrueCrypt Portable
+# Encryption
+
+**Making TrueCrypt Portable**
 
     1. Download yourself some TC copy.
     2. Extract the tar.gz
@@ -237,24 +275,24 @@ But you need to be aware that all disk-encryption is generally vulnerable - be i
 For software-based disk-encryption there are these known attacks:
 
 1. DMA-Attacks (DMA/HDMI-Ports are used to connect to a running, locked machine to unlock it)
-1. Cold-Boot-Attacks (Keys are extracted from RAM after a cold reboot)
-1. Freezing of RAM (RAM is frozen and inserted into the attacker's machine to extratct the key)
-1. Evil-Maid-Attacks (Diﬀerent methods to boot up a trojanized OS or some kind of software- keylogger)
+2. Cold-Boot-Attacks (Keys are extracted from RAM after a cold reboot)
+3. Freezing of RAM (RAM is frozen and inserted into the attacker's machine to extratct the key)
+4. Evil-Maid-Attacks (Diﬀerent methods to boot up a trojanized OS or some kind of software- keylogger)
 
 For hardware-based disk-encryption there are similar attacks:
 
-1. DMA-Attacks (same as with SW-based encryption)
-1. Replug-Attacks (Drive's data cable is disconnected and connected to attacker's machine via SATA- hotplugging)
-1. Reboot-Attacks (Drive's data cable is disconnected and connected to attacker's machine after enforced reboot. Then the bios-password is circumvented through the repeated pressing of the F2- and enter-key. After the bios integrated SED-password has been disabled the data-cable is plugged into the attacker's machine. This only works on some machines.)
-1. Networked-Evil-Maid-Attacks (Attacker steals the actual SED and replaces it with another containing a tojanized OS. On bootup victim enters it's password which is subsequently send to the attacker via network/local attacker hot-spot. Diﬀerent method: Replacing a laptop with a similar model [at e.g. airport/hotel etc.] and the attacker's phone# printed on the bottom of the machine. Victim boots up enters "wrong" password which is send to the attacker via network. Victim discovers that his laptop has been misplaced, calls attacker who now copies the content and gives the "misplaced" laptop back to the owner.)
+1. **DMA-Attacks**: Same as with SW-based encryption
+2. **Replug-Attacks**: Drive's data cable is disconnected and connected to attacker's machine via SATA- hotplugging
+3. **Reboot-Attacks**: Drive's data cable is disconnected and connected to attacker's machine after enforced reboot. Then the bios-password is circumvented through the repeated pressing of the F2- and enter-key. After the bios integrated SED-password has been disabled the data-cable is plugged into the attacker's machine. This only works on some machines.
+4. **Networked-Evil-Maid-Attacks**: Attacker steals the actual SED and replaces it with another containing a tojanized OS. On bootup victim enters it's password which is subsequently send to the attacker via network/local attacker hot-spot. Diﬀerent method: Replacing a laptop with a similar model [at e.g. airport/hotel etc.] and the attacker's phone# printed on the bottom of the machine. Victim boots up enters *"wrong"* password which is send to the attacker via network. Victim discovers that his laptop has been misplaced, calls attacker who now copies the content and gives the "misplaced" laptop back to the owner.
 
 A full explanation of all these attacks been be found in this presentation. (Unfortunately it has not yet been translated into English.) An English explanation of an evil-maid-attack against TrueCrypt encrypted drives can be found here
 
-Attacks on encrypted Containers
+## Attacks on encrypted Containers
 
 There are also attacks against encrypted containers. They pretty much work like cold-boot-attacks, without the booting part. An attacker can dump the container's password if the computer is either running or is in hibernation mode - either having the container open and even when the container has been opened during that session - using temporary and hibernation ﬁles.
 
-Debian's encrypted LVM pwned
+**Debian's encrypted LVM pwned**
 
 This type of "full" disk encryption can also be fooled by an attack that could be classiﬁed as a custom and extended evil-maid-attack. Don't believe me? Read this!
 
@@ -275,7 +313,7 @@ One computer I tried setting this defense up on couldn’t boot from USB devices
 
 I can now boot to this CD with my USB stick in, and the CD will then boot from the USB stick, which will then boot the closely watched initrd.img to load Ubuntu. A little annoying maybe, but it works.
 
-(Big thanks to Micah Lee!)
+*(Big thanks to Micah Lee!)*
 
 Note: Apparently there is an issue with installing GRUB onto USB with waldorf/wheezy. As soon as I know how to get that ﬁxed I will update this section.
 
@@ -293,7 +331,7 @@ When using encrypted containers that contain sensitive data you should shutdown 
 
 If you have to rely on data being encrypted and would be in danger if anyone would ﬁnd the data you were encrypting you should consider only using a power-supply when using a laptop - as opposed to running on power and battery. That way if let's say, you live in a dictatorship or the maﬁa is out to get you - and they are coming to your home or wherever you are - all you need to do when you sense that something weird is going on is to pull the cable and hope that they still need at least 30 secs to get to your ram. This can help prevent the above mentioned attacks and thus keep your data safely hidden.
 
-eCryptfs
+### eCryptfs
 
 If for some reason (like performance or not wanting to type in thousands of passwords on boot) you don't want to use an encrypted LVM you can use ecryptfs to encrypt ﬁles and folders after installation of the OS. To ﬁnd out about all the diﬀerent features of ecryptfs and how to use them I would like to point you to bodhi.zazen's excellent ecryptfs-tutorial. But there is one thing that is also important for later steps in this guide and is generally a good idea to do:
 
@@ -301,24 +339,24 @@ Encrypting SWAP using eCryptfs
 Especially when using older machines with less ram than modern computers it can happen quite frequently that your machine will use swap for diﬀerent tasks when there's not enough ram available to do the job. Apart from the lack of speed this is isn't very nice from a security standpoint: as the swap-partition is not located within your ram but on your harddrive - writing into this partion will leave traces of your activities on the harddrive itself. If your computer happens to use swap during your use of encryption tools it can happen that the passwords to the keys are written to swap and are thus extractable from there - which is something you really want to avoid.
 
 You can do this very easily with the help of ecryptfs. First you need to install it:
-$ sudo apt-get install ecryptfs-utils cryptsetup
+`$ sudo apt-get install ecryptfs-utils cryptsetup`
 
 Then we need to actually encrypt our swap using the following command:
 
-$ sudo ecryptfs-setup-swap
+`$ sudo ecryptfs-setup-swap`
 
 Your swap-partition will be unmounted, encrypted and mounted again. To make sure that it worked run this command:
 
-$ sudo blkid | grep swap
+`$ sudo blkid | grep swap`
 
 The output lists your swap partion and should contain "cryptswap". To avoid error messages on boot you will need to edit your /etc/fstab to ﬁt your new setup:
-$ sudo geany /etc/fstab
+`$ sudo geany /etc/fstab`
 
 Copy the content of that ﬁle into another ﬁle and save it. You will want to use it as back-up in case something gets screwed up.
 
 Now make sure to ﬁnd the entry of the above listed encrypted swap partition. If you found it go ahead and delete the other swap-entry relating to the unencrypted swap-partition. Save and reboot to check that everything is working as it should be.
 
-Tomb
+### Tomb
 
 Another great crypto-tool is Tomb provided by the dyne-crew. Tomb uses LUKS AES/SHA-256 and can thus be consider secure. But Tomb isn't just a possible replacement for tools like TrueCrypt. It has some really neat and easy to use features:
 
@@ -337,8 +375,8 @@ Now verify the key-ﬁngerprint.
 $ sudo gpg --fingerprint software@dyne.org | grep fingerprint
 The output of the above command should be: Key ﬁngerprint = 8E1A A01C F209 587D 5706 3A36 E314 AFFA 8A7C 92F1 Now, after checking that you have the right key you can trust add it to apt:
 
-$ sudo gpg --armor --export software@dyne.org > dyne.gpg
-$ sudo apt-key add dyne.gpg
+`sudo gpg --armor --export software@dyne.org > dyne.gpg
+``sudo apt-key add dyne.gpg`
 
 After you did this you want to add dyne's repos to your sources.list:
 
@@ -350,100 +388,95 @@ deb http://apt.dyne.org/debian dyne main deb-src http://apt.dyne.org/debian dyne
 
 To sync apt:
 
-$ sudo apt-get update
+`$ sudo apt-get update`
 
 To install Tomb:
 
-$ sudo apt-get install tomb
+`$ sudo apt-get install tomb`
 
 Usage:
 
 If you have your swap activated Tomb will urge you to turn it oﬀ or encrypt it. If you encrypt it and leave it on you will need to include --ignore-swap into your tomb-commands. To turn oﬀ swap for this session you can run
 
-$ swapoff -a
+`$ swapoff -a`
 
 To disable it completely you can comment out the swap in /etc/fstab. So it won't be mounted on reboot. (Please be aware that disabling swap on older computers with not much ram isn't such a good idea.
 Once your ram is being used fully while having no swap-partition mounted processes and programs will crash.)
 
 Tomb will create the crypto-ﬁle in the folder you are currently in - so if you want to create a tomb-ﬁle in your documents-folder make sure to
 
-$ cd /home/user/documents
+`$ cd /home/user/documents`
 
 Once you are in the right folder you can create a tomb-ﬁle with this command:
 
-$ tomb -s XX create FILE
+`$ tomb -s XX create FILE`
 
 XX is used to denote the size of the ﬁle in MB. So in order to create a ﬁle named "test" with the size of 10MB you would type this:
 
-$ tomb -s 10 create test
+`$ tomb -s 10 create test`
 
 Please note that if you haven't turned oﬀ your swap you will need to modify this command as follows:
 
-$ tomb --ignore-swap -s 10 create test
+`$ tomb --ignore-swap -s 10 create test`
 
 To unlock and mount that ﬁle on /media/test type:
 
-$ tomb open test.tomb
+`$ tomb open test.tomb`
 
 To unlock and mount to a diﬀerent location:
 
-$ tomb open test.tomb /different/location
+`$ tomb open test.tomb /different/location`
 To close that particular ﬁle and lock it:
 
-$ tomb close /media/test.tomb
+`$ tomb close /media/test.tomb`
 
 To close all tomb-ﬁles:
 
-$ tomb close all
+`$ tomb close all`
 
 or simply:
 
-$ tomb slam
+`$ tomb slam`
 
 After these basic operations we come to the fun part:
 
-Advanced Tomb-Sorcery
+### Advanced Tomb-Sorcery
 
 Obviously having a ﬁle lying around somewhere entitled: "secret.tomb" isn't such a good idea, really. A better idea is to make it harder for an attacker to even ﬁnd the encrypted ﬁles you are using. To do this we will simply move its content to another ﬁle.
 Example:
 
-$ touch true-story.txt true-story.txt.key
-$ mv secret.tomb true-story.txt
-$ mv secret.tomb.key true-story.txt.key
+`touch true-story.txt true-story.txt.key`
+`mv secret.tomb true-story.txt`
+`mv secret.tomb.key true-story.txt.key`
 
-Now you have changed the ﬁlename of the encrypted ﬁle in such a way that it can't easily be detected. When doing this you have to make sure that the ﬁlename syntax tomb uses is conserved:
+``Now you have changed the ﬁlename of the encrypted ﬁle in such a way that it can't easily be detected. When doing this you have to make sure that the ﬁlename syntax tomb uses is conserved:
 filename.suffix filename.suffix.key
 
 Otherwise you will have trouble opening the ﬁle. After having hidden your ﬁle you might also want to move the key to another medium.
 
-$ mv true-story.txt.key /medium/of/your/choice
+`$ mv true-story.txt.key /medium/of/your/choice`
 
 Now we have produced quite a bit of obfuscation. Now let's take this even further: After we have renamed our tomb-ﬁle and separated key and ﬁle we now want to make sure our key can't be found either. To do this we will hide it within a jpeg-ﬁle.
 $ tomb bury true-story.txt.key invisible-bike.jpg
 
 You will need to enter a steganography-password in the process. Now rename the original keyﬁle to something like "true-story.txt.key-backup" and check if everything worked:
 
-$ tomb exhume true-story.txt.key invisible-bike.jpg
+`$ tomb exhume true-story.txt.key invisible-bike.jpg`
 
 Your key should have reappeared now. After making sure that everything works you can safely bury the key again and delete the residual key that usually stays in the key's original folder. By default Tomb's encrypted ﬁle and key need to be in one folder. If you have separated the two you will have to modify your opening-command:
 
-$ tomb -k /medium/of/your/choice/true-story.txt.key open true-story.txt
+`$ tomb -k /medium/of/your/choice/true-story.txt.key open true-story.txt`
 
 To change the key-ﬁles password:
 
-$ tomb passwd true-story.txt.key
+`$ tomb passwd true-story.txt.key`
 
 If, let's say, you want to use Tomb to encrypt your icedove mail-folders you can easily do that. Usually
 it would be a pain in the butt to do this kind of stuﬀ with e.g. truecrypt because you would need to setup a container, move the folder to the container and when using the folder you would have to move back to its original place again.
 
-Tomb does this with ease:
+Tomb does this with ease: Simply move the folders you want to encrypt into the root of the tomb-ﬁle you created.
 
-Simply move the folders you want to encrypt into the root of the tomb-ﬁle you created.
-
-Example:
-
-You want to encrypt your entire .icedove folder. Then you make a tomb-ﬁle for it and move the
-.icedove folder into that tomb. The next thing you do is create a ﬁle named "bind-hooks" and place it in the same dir. This ﬁle will contain a simple table like this:
+Example:  You want to encrypt your entire .icedove folder. Then you make a tomb-ﬁle for it and move the .icedove folder into that tomb. The next thing you do is create a ﬁle named "bind-hooks" and place it in the same dir. This ﬁle will contain a simple table like this:
 .icedove .icedove
 .folder-x .folder-x
 .folder-y .folder-y
@@ -451,62 +484,62 @@ You want to encrypt your entire .icedove folder. Then you make a tomb-ﬁle for 
 
 The ﬁst column denotes the path relative to the tomb's root. The second column represents the path relative to the user's home folder. So if you simply wanted to encrypt your .icedove folder - which resides in /home/user/ the above notation is ﬁne. If you want the folder to be mounted elsewhere in the your /home you need to adjust the lines accordingly. One thing you need to do after you moved the original folder into the tomb is to create a dummy-folder into which the original's folders content can be mounted. So you simply go into /home/user and create a folder named ".icedove" and leave it empty. The next time you open and mount that tomb-ﬁle your .icedove folder will be where it should be and will disappear as soon as you close the tomb. Pretty nice, hu? I advise to test this out before you actually move all your mails and prefs into the tomb. Or simply make a backup. But use some kind of safety-net in order not to screw up your settings.
 
-Keyloggers
+# Keyloggers
+
+
 Keyloggers can pose a great thread to your general security - but especially the security of your encrypted drives and containers. If someone manages to get a keylogger onto your system he/she will be able to collect all the keystrokes you make on your machine. Some of them even make screenshots.
 
 So what kind of keyloggers are there?
 
-Software Keyloggers
+### Software Keyloggers
 
 For linux there are several software-keyloggers available. Examples are lkl, uberkey, THC-vlogger, PyKeylogger, logkeys. Defense against Software Keyloggers
 
-Defense against Software Keyloggers
+### Defense against Software Keyloggers
 
-Never use your system-passwords outside of your system
+**Never use your system-passwords outside of your system**
 
 Generally everything that is to be installed under linux needs root access or some priveliges provided through /etc/sudoers. But an attacker could have obtained your password if he/she was using a browser-exploitation framework such as beef - which also can be used as a keylogger on the browser level. So if you have been using your sudo or root password anywhere on the internet it might have
 leaked and could thus be used to install all kinds of evil sh*t on your machine. Keyloggers are also often part of rootkits. So do regular system-checks and use intrusion-detection-systems.
 
-Make sure your browser is safe
+**Make sure your browser is safe**
 
 Often people think of keyloggers only as either a software tool or a piece of hardware equipment installed on their machine. But there is another threat that is actually much more dangerous for linux users: a compromised browser. You will ﬁnd a lot of info on how to secure your browser further down. So make sure you use it.
 
 Compromising browsers isn't rocket science. And since all the stuﬀ that is actually dangerous in the browser is cross-plattform - you as a linux-user aren't safe from that. No matter what short-sighted linux-enthusiasts might tell you. A java-script exploit will pwn you - if you don't secure your browser. No matter if you are on OSX, Win or debian.
 
-Check running processes
+**Check running processes**
 
 If your attacker isn't really skilled or determined he/she might not think about hiding the process of the running keylogger. You can take a look at the output of
 
-$ ps -aux
+`$ ps -aux`
 
 or
 
-$ htop
+`$ htop`
 
 or
 
-$ pstree
+`$ pstree`
 
 and inspect the running processes. Of course the attacker could have renamed it. So have a look for suspicious processes you have never heard of before. If in doubt do a search on the process or ask in a security-related forum about it. Since a lot of keyloggers come as the functionality of a rootkit it would be much more likely that you would have one of these.
 
-Do daily scans for rootkits
+**Do daily scans for rootkits**
 
 I will describe tools for doing that further below. RKHunter and chkrootkit should deﬁnitely be used. The other IDS-tools described give better results and are much more detailed - but you actually need to know a little about linux-architecture and processes to get a lot out of them. So they're optional.
 
-Don't rely on virtual keyboards
+**Don't rely on virtual keyboards**
 
 The idea to defeat a keylogger by using a virtual keyboard is nice. But is also dangerous. There are some keyloggers out there that will also capture your screen activity. So using a virtual keyboard is pretty useless and will only result in the false feeling of security.
 
-
-
-Hardware Keyloggers
+**Hardware Keyloggers**
 
 There is also an ever growing number of hardware keyloggers. Some of which use wiﬁ. And some of them can be planted inside your keyboard so you wouldn't even notice them if you inspected your
 hardware from the outside.
 
-Defense against Hardware Keyloggers
+### Defense against Hardware Keyloggers
 
-Inspect your Hardware
+**Inspect your Hardware**
 
 This one's obvious.
 
@@ -514,167 +547,167 @@ Check which devices are connected to your machine
 
 There is a neat little tool called USBView which you can use to check what kind of usb-devices are connected to your machine. Some - but not all - keyloggers that employ usb will be listed there. It is available through the debian-repos.
 
-$ sudo apt-get install usbview
+`$ sudo apt-get install usbview`
 
 Apart from that there's not much you can do about them. If a physical attack is part of your thread- model you might want to think about getting a laptop safe in which you put the machine when not in use or if you're not around. Also, don't leave your laptop unattended at work, in airports, hotels and on conferences.
 
-Secure File-Deletion
+# Secure File-Deletion
+
 Additional to encrypted drives you may also want to securely delete old data or certain ﬁles. For those who do not know it: regular "ﬁle deletion" does not erase the "deleted" data. It only unlinks the ﬁle's inodes thus making it possible to recover that "deleted" data with forensic software.
 
 There are several ways to securely delete ﬁles - depending on the ﬁlesystem you use. The easiest is:
 
-BleachBit
+### BleachBit
 
 With this little tool you can not only erase free disc space - but also clean your system from various temporary ﬁles you don't need any longer and that would give an intruder unnecessary information about your activities.
 
 To install:
 
-$ sudo apt-get install bleachbit
+`$ sudo apt-get install bleachbit`
 
 to run:
 
-$ bleachbit
+`$ bleachbit`
 
 Just select what you need shredding. Remember that certain functions are experimental and may cause problems on your system. But no need to worry: BleachBit is so kind to inform you about that and give you the chance to cancel your selection.
 
 Another great [and much more secure] tool for ﬁle deletion is:
 
-srm [secure rm]
+### srm [secure rm]
 
 $ sudo apt-get install secure-delete
 Usage:
-Syntax: srm [-dflrvz] file1 file2 etc. Options:
+`Syntax: srm [-dflrvz] file1 file2 etc. Options:
 -d ignore the two dot special files "." and "..".
 -f fast (and insecure mode): no /dev/urandom, no synchronize mode.
 -l lessens the security (use twice for total insecure mode).
 -r recursive mode, deletes all subdirectories.
 -v is verbose mode.
--z last wipe writes zeros instead of random data.
+-z last wipe writes zeros instead of random data.`
 
 Other Ways to securely wipe Drives
 
 To overrite data with zeros:
 
-# dd if=/dev/zero of=/dev/sdX
+`$ dd if=/dev/zero of=/dev/sdX`
 
 or:
 
-$ sudo dd if=/dev/zero of=/dev/sdX
+`$ sudo dd if=/dev/zero of=/dev/sdX`
 
 To overwrite data with random data (makes it less obvious that data has been erased):
 
-# dd if=/dev/urandom of=/dev/sdX
+`$ dd if=/dev/urandom of=/dev/sdX`
 
 or:
 
-$ sudo dd if=/dev/urandom of=/dev/sdX
+`$ sudo dd if=/dev/urandom of=/dev/sdX`
 
 Note: shred doesn't work reliably with ext3.
 
-Your Internet-Connection
+# Your Internet-Connection
+
 Generally it is advised to use a wired LAN-connection - as opposed to wireless LAN (WLAN). For further useful information in regards to wireless security read this. If you must use WLAN please use WPA2 encryption. Everything else can be h4xx0red by a 12-year-old using android-apps such as anti.
 
 Another thing is: Try only to run services on your machine that you really use and have conﬁgured properly. If e.g. you don't use SSH - deinstall the respective client to make sure to save yourself some trouble. Please note that IRC also is not considered to be that secure. Use it with caution or simply use a virtual machine for stuﬀ like that.
 If you do use SSH please consider using Denyhosts, SSHGuard, or fail2ban. (If you want to ﬁnd out what might happen if you don't use such protection see foozer's post.)
 
+### firewall
+
 So, let's begin with your ﬁrewall. For debian-like systems there are several possible ﬁrewall-setups and diﬀerent guis to do the job. UFW is an excellent choice that is included by default in Ubuntu, simply set your rules an enable:
 
-$ sudo ufw allow 22 # To allow SSH, for example
-$ sudo ufw enable	# Enable the firewall
+`$ sudo ufw allow 22 # To allow SSH, for example `
+
+`$ sudo ufw enable    # Enable the firewall`
 
 Another option is ipkungfu [an iptables-script]. This is how you set it up:
 
-ipkungfu
+### ipkungfu
 
 download and install:
-$ sudo apt-get install ipkungfu
+`$ sudo apt-get install ipkungfu`
 
 conﬁgure:
 
-$ sudo geany /etc/ipkungfu/ipkungfu.conf
+`$ sudo geany /etc/ipkungfu/ipkungfu.conf`
 
 uncomment (and adjust):
 
-# IP Range of your internal network. Use "127.0.0.1" # for a standalone machine. Default is a reasonable # guess.
-LOCAL_NET="192.168.1.0/255.255.255.0"
+ 
 
-
-# Set this to 0 for a standalone machine, or 1 for # a gateway device to share an Internet connection. # Default is 1.
-GATEWAY=0
-
-
-# Temporarily block future connection attempts from an # IP that hits these ports (If module is present) FORBIDDEN_PORTS="135 137 139"
-
-
-# Drop all ping packets?
-# Set to 1 for yes, 0 for no. Default is no.
-BLOCK_PINGS=1
-
-
-# What to do with 'probably malicious' packets #SUSPECT="REJECT"
-SUSPECT="DROP"
-
-
-# What to do with obviously invalid traffic
-# This is also the action for FORBIDDEN_PORTS #KNOWN_BAD="REJECT"
-KNOWN_BAD="DROP"
-
-
-# What to do with port scans #PORT_SCAN="REJECT" PORT_SCAN="DROP"
+    # IP Range of your internal network. Use "127.0.0.1" # for a standalone machine. Default is a reasonable # guess.
+    LOCAL_NET="192.168.1.0/255.255.255.0"
+    # Set this to 0 for a standalone machine, or 1 for # a gateway device to share an Internet connection. # Default is 1.
+    GATEWAY=0
+    # Temporarily block future connection attempts from an # IP that hits these ports (If module is present) FORBIDDEN_PORTS="135 137 139"
+    # Drop all ping packets?
+    # Set to 1 for yes, 0 for no. Default is no.
+    BLOCK_PINGS=1
+    # What to do with 'probably malicious' packets #SUSPECT="REJECT"
+    SUSPECT="DROP"
+    # What to do with obviously invalid traffic
+    # This is also the action for FORBIDDEN_PORTS #KNOWN_BAD="REJECT"
+    KNOWN_BAD="DROP"
+    # What to do with port scans #PORT_SCAN="REJECT" PORT_SCAN="DROP"
 
 enable ipkungfu to start with the system:
 
-$ sudo geany /etc/default/ipkungfu change: "IPKFSTART = 0" ---> "IPKFSTART=1"
-start ipkungfu:
+`$ sudo geany /etc/default/ipkungfu change: "IPKFSTART = 0" ---> "IPKFSTART=1"
+`start ipkungfu:
 
-$ sudo ipkungfu
+`$ sudo ipkungfu`
 
 ﬁre up GRC's Shields Up! and check out the awesomeness. (special thanks to the ubuntu-community)
 
 Conﬁguring /etc/sysctl.conf
 Here you set diﬀerent ways how to deal with ICMP-packets and other stuﬀ:
 
-$ sudo geany /etc/sysctl.conf
+`$ sudo geany /etc/sysctl.conf`
 
-# Do not accept ICMP redirects (prevent MITM attacks) net.ipv4.conf.all.accept_redirects=0 net.ipv6.conf.all.accept_redirects=0 net.ipv4.tcp_syncookies=1
-#lynis recommendations #net.ipv6.conf.default.accept_redirects=0 net.ipv4.tcp_timestamps=0 net.ipv4.conf.default.log_martians=1
-# TCP Hardening - [url]http://www.cromwell-intl.com/security/security-stack-hardening.html[/url] net.ipv4.icmp_echo_ignore_broadcasts=1
-net.ipv4.conf.all.forwarding=0 net.ipv4.conf.all.rp_filter=1 net.ipv4.tcp_max_syn_backlog=1280 kernel.core_uses_pid=1 kernel.sysrq=0
-#ignore all ping net.ipv4.icmp_echo_ignore_all=1
-# Do not send ICMP redirects (we are not a router) net.ipv4.conf.all.send_redirects = 0
-# Do not accept IP source route packets (we are not a router) net.ipv4.conf.all.accept_source_route = 0
-net.ipv6.conf.all.accept_source_route = 0 # Log Martian Packets net.ipv4.conf.all.log_martians = 1
+    # Do not accept ICMP redirects (prevent MITM attacks) net.ipv4.conf.all.accept_redirects=0 net.ipv6.conf.all.accept_redirects=0 net.ipv4.tcp_syncookies=1
+    # lynis recommendations #net.ipv6.conf.default.accept_redirects=0 net.ipv4.tcp_timestamps=0 net.ipv4.conf.default.log_martians=1
+    # TCP Hardening - [url]http://www.cromwell-intl.com/security/security-stack-hardening.html[/url] net.ipv4.icmp_echo_ignore_broadcasts=1
+    net.ipv4.conf.all.forwarding=0 net.ipv4.conf.all.rp_filter=1 
+    net.ipv4.tcp_max_syn_backlog=1280 
+    kernel.core_uses_pid=1 
+    kernel.sysrq=0
+    # ignore all ping net.ipv4.icmp_echo_ignore_all=1
+    # Do not send ICMP redirects (we are not a router) net.ipv4.conf.all.send_redirects = 0
+    # Do not accept IP source route packets (we are not a router) net.ipv4.conf.all.accept_source_route = 0
+    # Log Martian Packets net.ipv4.conf.all.log_martians = 1
+    net.ipv6.conf.all.accept_source_route = 0 
 
 After editing do the following to make the changes permanent:
 
-sudo sysctl -p
+`$ sudo sysctl -p`
 
 (thanks to tradetaxfree for these settings)
 
-Modem & Router
+## Modem & Router
 
 Please don't forget to enable the ﬁrewall features of your modem (and router), disable UPnP and change the usernames and admin-passwords. Also try to keep up with the latest security info and updates on your ﬁrmware to prevent using equipment such as this. You might also want to consider setting up your own ﬁrewall using smoothwall.
 Here you can run a short test to see if your router is vulnerable to UPnP-exploits.
 
 The best thing to do is to use after-market-open-source-ﬁrmware for your router such as dd-wrt, openwrt or tomato. Using these you can turn your router into an enterprise grade device capable of some real Kungfu. Of course they come with heavy artillery - dd-wrt e.g. uses an IP-tables ﬁrewall which you can conﬁgure with custom scripts.
 
-Intrusion-Detection, Rootkit-Protection & AntiVirus
-Snort
+## Intrusion-Detection, Rootkit-Protection & AntiVirus
+
+### Snort
 
 The next thing you might want to do is to take a critical look at who's knocking at your doors. For this we use snort. The setup is straight forward and simple:
 
-$ sudo apt-get install snort
+`$ sudo apt-get install snort`
 
 run it:
 
-$ snort -D (to run as deamon)
+`$ snort -D (to run as deamon)`
 
 to check out packages live type:
 
-$ sudo snort
+`$ sudo snort`
 
 Snort should automatically start on reboot. If you want to check out snort's rules take a look at: /etc/ snort/rules To take a look at snorts warnings:
-$ sudo geany /var/log/snort/alert
+`$ sudo geany /var/log/snort/alert`
 
 Snort will historically list all the events it logged. There you will ﬁnd nice entries like this...
 [**] [1:2329:6] MS-SQL probe response overflow attempt [**]
@@ -682,46 +715,46 @@ Snort will historically list all the events it logged. There you will ﬁnd nice
 
 ...and will thank the ﬂying teapot that you happen to use #! wink
 
-RKHunter
+### RKHunter
 
 The next thing to do is to set up RKHunter - which is short for [R]oot[K]itHunter. What does it do? You guessed it: It hunts down rootkits. Installation again is simple:
 
-$ sudo apt-get install rkhunter
+`$ sudo apt-get install rkhunter`
 
 The best is to run rkhunter on a clean installation - just to make sure nothing has been tampered with already. One very important thing about rkhunter is that you need to give it some feedback: everytime you e.g. make an upgrade to your sytem and some of your binaries change rkhunter will weep and tell you you've been compromised. Why? Because it can only detect suspicious ﬁles and ﬁle- changes. So, if you go about and e.g. upgrade the coreutils package a lot of change will be happening in /usr/bin - and when you subsequently ask rkhunter to check your system's integrity your log ﬁle will be all red with warnings. It will tell you that the ﬁle-properties of your binaries changed and you start freaking out. To avoid this simply run the command rkhunter --propupd on a system which you trust to not have been compromised. In short: directly after commands like apt-get update && apt-get upgrade run:
 
-$ sudo rkhunter --propupd
+`$ sudo rkhunter --propupd`
 
 This tells rkhunter: 'sall good. wink To run rkhunter:
-$ sudo rkhunter -c --sk
+`$ sudo rkhunter -c --sk`
 
 You ﬁnd rkhunter's logﬁle in /var/log/rkhunter.log. So when you get a warning you can in detail check out what caused it.
 
 To set up a cronjob for RKHunter:
 
-$ sudo geany /etc/cron.daily/rkhunter.sh
+`$ sudo geany /etc/cron.daily/rkhunter.sh`
 
 insert and change the mail-address:
 
-#!/bin/bash
-/usr/local/bin/rkhunter -c --cronjob 2>&1 | mail -s "RKhunter Scan Details" your@email-address.com
+`#!/bin/bash
+/usr/local/bin/rkhunter -c --cronjob 2>&1 | mail -s "RKhunter Scan Details" your@email-address.com`
 
 make the script executable:
 
-$ sudo chmod +x /etc/cron.daily/rkhunter.sh
+`$ sudo chmod +x /etc/cron.daily/rkhunter.sh`
 
 update RKHunter:
 
-$ sudo rkhunter --update
+`$ sudo rkhunter --update`
 
 and check if it functions the way it's supposed to do:
-$ sudo rkhunter -c --sk
+`$ sudo rkhunter -c --sk`
 
 Of course you can leave out the email-part of the cronjob if you don't want to make the impression on someone shoulder-surﬁng your email-client that the only one who's sending you emails is your computer... wink
 
 Generally, using snort and rkhunter is a good way to become paranoid - if you're not already. So please take the time to investigate the alerts and warnings you get. A lot of them are false positives and the listings of your system settings. Often enough nothing to worry about. But if you want to use them as security tools you will have to invest the time to learn to interpret their logs. Otherwise just skip them.
 
-RKHunter-Jedi-Tricks
+### RKHunter-Jedi-Tricks
 
 If you're in doubt whether you did a rkhunter --propupd after an upgrade and you are getting a warning you can run the following command:
 
@@ -731,11 +764,11 @@ Now rkhunter will check back with your package-manager to verify that all the bi
 
 To do this:
 
-$ dpkg -S /folder/file/in/doubt
+`$ dpkg -S /folder/file/in/doubt`
 
 Example:
 
-$ dpkg -S /bin/ls
+`$ dpkg -S /bin/ls`
 
 Output:
 
@@ -744,11 +777,11 @@ coreutils: /bin/ls
 This tells you that the ﬁle you were checking (in this case /bin/ls) belongs to the package "coreutils". Now you can ﬁre up packagesearch.
 If you haven't installed it:
 
-$ sudo apt-get install packagesearch
+`$ sudo apt-get install packagesearch`
 
 To run:
 
-$ sudo packagesearch
+`$ sudo packagesearch`
 
 In packagesearch you can now enter coreutils in the ﬁeld "search for pattern". Then you select the package in the box below. Then you go over to the right and select "ﬁles". There you will get a list of ﬁles belonging to the selected package. What you want to do now is to look for something like:
 /usr/share/doc/coreutils/changelog.Debian.gz
@@ -760,11 +793,11 @@ modiﬁed at the same time as the binary in doubt was modiﬁed you can be quite
 
 Another neat tool with similar functionality is: chrootkit
 
-chkrootkit
+### chkrootkit
 
 To install:
 
-$ sudo apt-get install chkrootkit
+`$ sudo apt-get install chkrootkit`
 
 To run:
 
@@ -776,15 +809,15 @@ Tiger
 
 Tiger is more thorough than rkhunter and chkrootkit and can aid big time in securing your box:
 
-$ sudo apt-get install tiger
+`$ sudo apt-get install tiger`
 
 to run it:
 
-$ sudo tiger
+`$ sudo tiger`
 
 you ﬁnd tiger's logs in /var/log/tiger/
 
-Lynis
+### Lynis
 
 If you feel that all the above IDS-tools aren't enough - I got something for you: Lynis Lynis wrote:
 Lynis is an auditing tool for Unix (specialists). It scans the system and available software, to detect security issues. Beside security related information it will also scan for general system information, installed packages and conﬁguration mistakes.
@@ -801,68 +834,72 @@ $ sudo lynis -c
 
 Lynis will explain its ﬁndings in the log-ﬁle.
 
-debsums
+### debsums
+
 debsums checks the md5-sums of your system-ﬁles against the hashes in the respective repos. Installation:
 $ sudo apt-get install debsums
 
 To run:
 
-$ sudo debsums -ac
+`$ sudo debsums -ac`
 
 This will list all the ﬁles to which the hashes are either missing or have been changed. But please don't freak out if you ﬁnd something like: /etc/ipkungfu/ipkungfu.conf after you have been following this guide... wink
 
-sha256
+### sha256
 
 There are some programs that come with sha256 hashes nowadays. For example: I2P debsums won't help with that. To check these hashes manually:
 $ cd /folder/you/downloaded/file/to/check/to -sha256sum -c file-you-want-to-check
 
 Then compare it to the given hash. Note: This tool is already integrated to debian-systems.
 
-ClamAV
+### ClamAV
 
 To make sure eveything that gets into your system is clean and safe use ClamA[nti]V[irus]. To install:
-$ sudo apt-get install clamav To update:
-$ sudo freshclam
+`$ sudo apt-get install clamav`
+
+ To update:
+`$ sudo freshclam`
 
 To inspect e.g. your download folder:
 
-$ sudo clamscan -ri /home/your-username/downloads
+`$ sudo clamscan -ri /home/your-username/downloads`
 
 This will ClamAV do a scan recursively, i.e. also scan the content of folders and inform you about possibly infected ﬁles.
 To inspect your whole system:
 
-$ sudo clamscan -irv --exclude=/proc --exclude=/sys --exclude=/dev --exclude=/media --exclude=/mnt
+`$ sudo clamscan -irv --exclude=/proc --exclude=/sys --exclude=/dev --exclude=/media --exclude=/mnt`
 
 This will make ClamAV scan your system recursively in verbose mode (i.e. show you what it is doing atm) whilst excluding folders that shouldn't be messed with or are not of interest and spit out the possibly infected ﬁles it ﬁnds. To also scan attached portable media you need to modify the command accordingly.
 
 Make sure to test everything you download for possible infections. You never know if servers which are normally trustworthy haven't been compromised. Malicious code can be hidden in every usually employed ﬁletype. (Yes, including .pdf!)
 Remember: ClamAV is known for its tight nets. That means that you are likely to get some false positives from time to time. Do a web-search if you're in doubt in regards to its ﬁndings.
 After you set up your host-based security measures we can now tweak our online security. Starting with:
-DNS-Servers
-Using secure and censor-free DNS
+
+# DNS-Servers
 
 Using secure and censor-free DNS
 
 To make changes to your DNS-settings:
 
-$ sudo geany /etc/resolv.conf
+`$ sudo geany /etc/resolv.conf`
 
 change your nameservers to trustworthy DNS-Servers. Otherwise your modem will be used as "DNS- Server" which gets its info from your ISP's DNS. And nah... We don't trust the ISP... wink Here you can ﬁnd secure and censor-free DNS-servers. The Germans look here.
 HTTPS-DNS is generally preferred for obvious reasons. Your resolv.conf should look something like this:
-nameserver 213.73.91.35
-#CCC DNS-Server nameserver 85.214.20.141 #FoeBud DNS-Server
+`nameserver 213.73.91.35
+#CCC DNS-Server nameserver 85.214.20.141 #FoeBud DNS-Server`
 
 Use at least two DNS-Servers to prevent connectivity problems when one server happens to be down or experiences other trouble.
 
 To prevent this ﬁle to be overwritten on system restart ﬁre up a terminal as root and run:
 
-$ sudo chattr +i /etc/resolv.conf
+`$ sudo chattr +i /etc/resolv.conf`
 
 This will make the ﬁle unchangeble - even for root. To revoke this for future changes to the .conf run:
-$ sudo chattr -i /etc/resolv.conf
+`$ sudo chattr -i /etc/resolv.conf`
 
 This forces your web-browser to use the DNS-servers you provided instead of the crap your ISP uses. To test the security of your DNS servers go here.
-DNSCrypt
+
+# DNSCrypt
 
 What you can also do to secure your DNS-connections is to use DNScrypt.
 
@@ -873,39 +910,48 @@ Depending on your threat-model, i.e. if you don't do anything uber-secret you do
 
 So, if you don't mind that OpenDNS will know every website you visit you might go ahead and conﬁgure DNScrypt:
 Download the current version. Then:
-$ sudo bunzip2 -cd dnscrypt-proxy-*.tar.bz2 | tar xvf -
-$ cd dnscrypt-proxy-*
+`$ sudo bunzip2 -cd dnscrypt-proxy-*.tar.bz2 | tar xvf -`
+
+`$ cd dnscrypt-proxy-*`
 
 Compile and install:
 
-$ sudo ./conﬁgure && make -j2 $ sudo make install
+`$ sudo ./conﬁgure && make -j4 `
 
-Adjust -j2 with the number of cpu-cores you want to use for the compilation or have at your disposal. Go and change your resolv.conf to use localhost:
-$ geany /etc/resolv.conf Modify to:
-nameserver 127.0.0.1
+`$ sudo make install`
+
+Adjust -j4 with the number of cpu-cores you want to use for the compilation or have at your disposal. Go and change your resolv.conf to use localhost:
+`$ geany /etc/resolv.conf Modify to:
+nameserver 127.0.0.1`
 
 Run DNScrypt as daemon:
 
-$ sudo dnscrypt-proxy --daemonize According to the developer: jedisct1 wrote:
-DNSCrypt will chroot() to this user's home directory and drop root privileges for this user's uid as soon
+`$ sudo dnscrypt-proxy --daemonize` 
 
-I have to admit that OpenDNS is really fast. What you could do is this: You could use OpenDNS for your "normal" browsing. When you start browsing for stuﬀ that you consider to be private for whatever reasons change your resolv.conf back to the trustworthy DNS-servers mentioned above - which you conveniently could keep as a backup ﬁle in the same folder. Yeah, that isn't slick, I know. If you come up with a better way to do this let me know. (As soon as I checked DNScrypt's function to use the same encryption for diﬀerent DNS-Servers I will make an update.)
+
+
+According to the developer: jedisct1 wrote: DNSCrypt will chroot() to this user's home directory and drop root privileges for this user's uid as soon I have to admit that OpenDNS is really fast. What you could do is this: You could use OpenDNS for your "normal" browsing. 
+
+When you start browsing for stuﬀ that you consider to be private for whatever reasons change your resolv.conf back to the trustworthy DNS-servers mentioned above - which you conveniently could keep as a backup ﬁle in the same folder. Yeah, that isn't slick, I know. If you come up with a better way to do this let me know. (As soon as I checked DNScrypt's function to use the same encryption for diﬀerent DNS-Servers I will make an update.)
+
+
 The next thing on our list is:
 
-Firefox/Iceweasel
-== Firefox-Sandbox: Sandfox ==Sandfox is a neat little script provided by IgnorantGuru which runs
-ﬁrefox (and other applications) in a sandboxed
-environment which prevents ﬁrefox's access to crucial ﬁlesystem-areas in case it gets compromised.
+# Firefox/Iceweasel
+
+## Firefox-Sandbox: Sandfox
+
+Sandfox is a neat little script provided by IgnorantGuru which runs ﬁrefox (and other applications) in a sandboxed environment which prevents ﬁrefox's access to crucial ﬁlesystem-areas in case it gets compromised.
 
 To install:
 
-$ sudo -s
+`$ sudo -s
 $ gpg --keyserver keys.gnupg.net --recv-keys 7977070A723C6CCB696C0B0227A5AC5A01937621
 $ gpg --check-sigs 0x01937621
 $ bash -c 'gpg --export -a 01937621 | apt-key add -'
 $ echo "deb [url]http://ignorantguru.github.com/debian/[/url] unstable main" >> /etc/apt/sources.list
 $ apt-get update
-$ apt-get install sandfox
+$ apt-get install sandfox`
 
 (Thanks to tradetaxfree) To run:
 $ sudo sandfox firefox
@@ -929,9 +975,7 @@ after a system start to create a sandbox. If you happen to ﬁnd this too much h
 
 After you successfully sandboxed your browser we now continue to make that particular application much more secure than it is by default.
 
-First go to:
-
-Firefox-Preferences
+## First go to: Firefox-Preferences
 
 and change these settings:
 
@@ -1018,14 +1062,12 @@ Now we come to the fun part. Finetuning Firefox using about:conﬁg. If you've n
 about:conﬁg
 You can simply copy/paste these variables into the search-bar at the top: e.g. "browser.cache.disk.enable" and then double-click on the entry that shows up to modify the settings.
 
-
 disable browser cache: browser.cache.disk.enable:false browser.cache.disk_cache_ssl:false browser.cache.oﬄine.enable:false browser.cache.memory.enable:false browser.cache.disk.capacity:0 browser.cache.disk.smart_size.enabled:false browser.cache.disk.smart_size.ﬁrst_run:false browser.cache.oﬄine.capacity:0 dom.storage.default_quota:0 dom.storage.enabled:false dom.indexedDB.enabled:false dom.battery.enabled:false
 
-
 disable history & localization browser.search.suggest.enabled:false browser.sessionstore.resume_from_crash:false geo.enabled:false ---misc other tweaks: keyword.enabled:false network.dns.disablePrefetch:true -> very important when using TOR network.dns.disablePrefetchFromHTTPS -> very important when using TOR dom.disable_window_open_feature.menubar:true dom.disable_window_open_feature.personalbar:true dom.disable_window_open_feature.scrollbars:true dom.disable_window_open_feature.toolbar:true browser.identity.ssl_domain_display:1 browser.urlbar.autocomplete.enabled:false browser.urlbar.trimURL:false privacy.sanitize.sanitizeOnShutdown:true network.http.sendSecureXSiteReferrer:false network.http.spdy.enabled:false ---> use http instead of google's spdy plugins.click_to_play:true ---> also check each drop-down-menu under "preferences"-
->"content" security.enable_tls_session_tickets:false ---> disable https-tracking
-security.ssl.enable_false_start:true ---> disable https-tracking extensions.blocklist.enabled:false ---> disble Mozilla's option to block/disable your addons remotely webgl.disabled:true ---> disable WebGL ([url]http://security.stackexchange.com/questions/13799/is-webgl-a-security-concern[/url]) network.websocket.enabled:false ---> ***Tor Users: This is extremely important as it could blow your cover! See: [url]http://pastebin.com/xajsbiyh***[/url]
 
+> "content" security.enable_tls_session_tickets:false ---> disable https-tracking
+> security.ssl.enable_false_start:true ---> disable https-tracking extensions.blocklist.enabled:false ---> disble Mozilla's option to block/disable your addons remotely webgl.disabled:true ---> disable WebGL ([url]http://security.stackexchange.com/questions/13799/is-webgl-a-security-concern[/url]) network.websocket.enabled:false ---> ***Tor Users: This is extremely important as it could blow your cover! See: [url]http://pastebin.com/xajsbiyh***[/url]
 
 make your browsing faster: network.http.pipelining:true network.http.pipelining.ssl:true network.http.proxy.pipelining:true network.http.max-persistent-connections-per-proxy:10 network.http.max-persistent-connections-per-server:10 network.http.max-connections-per-server:15 network.http.pipelining.maxrequests:15  network.http.redirection-limit:5 network.dns.disableIPv6:true network.http.fast-fallback-to-IPv4:false dom.popup_maximum Mine:10 network.prefetch-next:false browser.backspace_action:0 browser.sessionstore.max_tabs_undo:5 browser.sessionhistory.max_entries:5 browser.sessionstore.max_windows_undo:1 browser.sessionstore.max_resumed_crashes:0 browser.sessionhistory.max_total_viewers:0 browser.tabs.animate:0
 
@@ -1037,11 +1079,11 @@ For all Firefox Versions after 17.0 (you should be using current versions and up
 
 For the following changes right-click in about:conﬁg and select "new"->"string" and enter in this order:
 
-Variable:	Value:
+Variable:    Value:
 
-general.useragent.override		Mozilla/5.0 (Windows NT 6.1; rv:10.0) Gecko/20100101 Firefox/10.0 general.appname.override	Netscape
-general.appversion.override 5.0 (Windows) general.oscpu.override		Windows NT 6.1 general.platform.override	Win32 general.productSub.override 20100101
-general.buildID.override	0
+general.useragent.override        Mozilla/5.0 (Windows NT 6.1; rv:10.0) Gecko/20100101 Firefox/10.0 general.appname.override    Netscape
+general.appversion.override 5.0 (Windows) general.oscpu.override        Windows NT 6.1 general.platform.override    Win32 general.productSub.override 20100101
+general.buildID.override    0
 general.useragent.vendor [enter variable - but leave value blank] general.useragent.vendorSub [enter variable - but leave value blank] intl.accept_languages en-us,en;q=0.5
 network.http.accept.default text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 network.http.accept-encoding gzip, deflate
 
@@ -1057,7 +1099,8 @@ Also check your settings on ip-check.info - but don't rely on it. Apparently the
 
 Now, after having conﬁgured your host-based security and your web-browser we can start connecting to the web. But there are diﬀerent options:
 
-TOR [The Onion Router]
+# TOR [The Onion Router]
+
 TOR is probably the most famous anonymizing-tool available. You could consider it a safe-web proxy. [Update: I wouldn't say that any longer. See the TOR-Warning below for more info.] Actually, simply put, it functions as a SOCKS-proxy which tunnels your traﬃc through an encrypted network of relays in which your ip-address can not be traced. When your traﬃc exits the network through so-called exit-nodes the server you are contacting will only be able to retrieve the ip-address of the exit-node. It's pretty useful - but also has a few drawbacks:
 
 First of all it is slow as f**k. Secondly exit-nodes are often times honey-pots set up by cyber-criminals and intelligence agencies. Why? The traﬃc inside the TOR-network is encrypted - but in order to communicate with services on the "real" internet this traﬃc needs to be decrypted. And this happens at the exit-nodes - which are thus able to inspect your packets and read your traﬃc. Pretty uncool.
@@ -1078,7 +1121,7 @@ necessary.
 
 The other thing you/we can do is set up our own bridges/relays and contribute to the network. Then we can stream the DuckTales the whole darn day using obfuscated bridges without bad feelings... wink
 
-How to set up a TOR-connection over obfuscated bridges?
+### How to set up a TOR-connection over obfuscated bridges?
 
 Simple: Go to -> The Tor project's special obfsproxy page and download the appropriate pre- conﬁgured Tor-Browser-Bundle. wink
 Extract and run. (Though never as root!)
@@ -1086,6 +1129,7 @@ Extract and run. (Though never as root!)
 If you want to use the uber-secure webbrowser we conﬁgured above simply go to the TOR-Browsers settings and check the port it uses for proxying. (This will be a diﬀerent port every time you start the TOR-Bundle.)
 
 Then go into your browser and set up your proxy accordingly. Close the TOR-Browser and have phun!
+
 - But don't forget to: check if you're really connected to the network.
 
 To make this process of switching proxies even more easy you can use the FireFox-addon: FoxyProxy. This will come in handy if you use a regular connection, TOR and I2P all through the same browser.
@@ -1110,31 +1154,34 @@ Change the ﬁle-ownership to a user with restricted access (i.e. not root) and 
 
 (Another short notice to the Germans: Don't try to hand over stuﬀ you may ﬁnd there to the authorities, download or even make screenshots of it. This could get you into serious trouble. Sad but true. For more info watch this short vid.)
 
-TOR-Warning
+## TOR-Warning
 
-The above mentioned issues unfortunately aren't the only ones. I have come across more and more reasons not to use TOR:
-
-    1. When using TOR you use about ﬁve times your normal bandwidth - which makes you stick out for your ISP - even with obfuscate bridges in use.
-    2. TOR-nodes (!) and TOR-exit-nodes can be and are being used to deploy malicious code and to track and spy on users.
-    3. There are various methods of de-anonymizing TOR-users: from DNS-leaks over browser-info- analysis to traﬃc-ﬁngerprinting.
-I won't explain all these issues in detail but if you are interested in ﬁnding out why TOR isn't safe to use (and you should if you actually think that TOR is making you anonymous) I recommend you watch these talks:
+1. When using TOR you use about ﬁve times your normal bandwidth - which makes you stick out for your ISP - even with obfuscate bridges in use.
+2. TOR-nodes (!) and TOR-exit-nodes can be and are being used to deploy malicious code and to track and spy on users.
+3. There are various methods of de-anonymizing TOR-users: from DNS-leaks over browser-info- analysis to traﬃc-ﬁngerprinting.
+4. Remember that luminescent compatriots run almost all nodes. So, don't do anything stupid; just lurking around is enough to avoid a SWAT team raid on your basement.
 
 Attacking TOR at the Application-Layer De-TOR-iorate Anonymity Taking Control over the Tor Network Dynamic Cryptographic Backdoors to take over the TOR Network Security and Anonymity vulnerabilities in Tor Anonymous Internet Communication done Right (I disagree with the speaker on Proxies, though. See info on proxies below.) Owning Bad Guys and Maﬁa with Java-Script Botnets
 And if you want to see how TOR-Exit-Node sniﬃng is done live you can have a look at this: Tor: Exploiting the Weakest Link
 
 To make something clear: I have nothing against the TOR-project. In fact I like it really much. But TOR is simply not yet able to cash in the promises it makes. Maybe in a few years time it will be able to defend against a lot of the issues that have been raised and illustrated. But until then I can't safely recommend using it to anybody. Sorry to disappoint you.
 
-I2P
-I2P is a so-called darknet. It functions diﬀerently from TOR and is considered to be way more secure.
-It uses a much better encryption and is generally faster. You can theoretically use it to browse the web
-- but it is generally not advised and even slower as TOR using it for this purpose. I2P has some cool sites to visit, an anonymous email-service and a built-in anonymous torrent-client. wink
+# I2P
+
+I2P is a so-called darknet. It functions diﬀerently from TOR and is considered to be way more secure. It uses a much better encryption and is generally faster. You can theoretically use it to browse the web **but** it is generally not advised and even slower as TOR using it for this purpose. I2P has some cool sites to visit, an anonymous email-service and a built-in anonymous torrent-client. 
 
 For I2P to run on your system you need Open-JDK/JRE since I2P is a java-application. To install: Go to-> The I2P's website download, verify the SHA256 and install:
-$ cd /directory/you/downloaded/the/file/to && java -jar i2pinstall_0.9.4.jar
+`$ cd /directory/you/downloaded/the/file/to && java -jar i2pinstall_0.9.4.jar`
 
 Don't install as root - and even more important: Never run as root!
 
-To start: $ cd /yourI2P/folder ./i2prouter start To stop: $ cd /yourI2P/folder ./i2prouter stop
+To start:
+
+`$cd /yourI2P/folder ./i2prouter start `
+
+To stop: 
+
+`$ cd /yourI2P/folder ./i2prouter stop`
 
 Once running you will be directed to your Router-Console in FireFox. From there you have various options. You should consider to give I2P more bandwidth than default for a faster and more anonymous browsing experience.
 
@@ -1146,8 +1193,7 @@ You get the required software here.
 
 If you want to ﬁnd out how to use it - consult their helpsite.
 
-Secure Peer-to-Peer-Networks
-GNUnet
+# Secure Peer-to-Peer-Networks GNUnet
 
 Main article: GNUnet
 
@@ -1169,26 +1215,52 @@ This will tell the server you are connecting to that you are connecting to him v
     • Proxy servers are infested with malware - which will turn your machine into a zombie within a botnet - snooping out all your critical login data for email, banks and you name it.
 
     • Proxy servers can read - and modify - all your traﬃc. When skilled enough sometimes even circumventing SSL.
-
+    
     • Proxy servers can track you.
     • Most proxy servers are run by either criminals or intelligence agencies.
+
 Seriously. I really recommend watching this (very entertaining) Defcon-talk dealing with this topic. To see how easy e.g. java-script-injections can be done have a look at beef.
 
-VPN (Virtual Private Network)
-You probably have read the sections on TOR and proxy-servers (do it now - if you haven't) and now you are asking yourself: "&*%$!, what can I use to browse the web safely and anonymously????" Well, there is a pretty simple solution. But it will cost you a few nickels. You have to buy a premium-VPN- service with a trustworthy VPN-provider. If you don't know what a VPN is or how it works - check out this video. Still not convinced? Then read what lifehacker has to say about it. Once you've decided that you actually want to use a VPN you need to ﬁnd a trustworthy provider. Go here to get started with that. Only use services that oﬀer OpenVPN or Wireguard. Basically all the other protocols aren't that secure. Or at least they can't compare to Wireguard. Choose the most trustworthy service you ﬁnd out there and be paranoid about it. A trustworthy service doesn't keep logs. If you choose a VPN, read the complete FAQ, their Privacy Policy and the Terms of Service. Check where they're located and check local privacy laws. And: Don't tell people on the internet which service you are using. You can get yourself a second VPN account with a diﬀerent provider you access through a VM. That way VPN#1 only knows your IP-address but not the content of your communication and VPN#2 knows the content but not your IP-address.
+# VPN (Virtual Private Network)
 
-Don't try to use a free VPN. Remember: If you're not paing for it - you are the product.
-You can also run your own VPN by using a cloud server as your traﬃc exit point, if you trust your cloud provider more than any particular VPN company.
+You probably have read the sections on TOR and proxy-servers (do it now - if you haven't) and now you are asking yourself: "&*%$!, what can I use to browse the web safely and anonymously????" Well, there is a pretty simple solution. But it will cost you a few nickels. You have to buy a premium-VPN- service with a trustworthy VPN-provider.
 
-The Web
+If you don't know what a VPN is or how it works - check out this video. Still not convinced? Then read what lifehacker has to say about it. Once you've decided that you actually want to use a VPN you need to ﬁnd a trustworthy provider. Go here to get started with that. Only use services that oﬀer OpenVPN or Wireguard. Basically all the other protocols aren't that secure. Or at least they can't compare to Wireguard. 
+
+Choose the most trustworthy service you ﬁnd out there and be paranoid about it. A trustworthy service doesn't keep logs. If you choose a VPN, read the complete FAQ, their Privacy Policy and the Terms of Service. Check where they're located and check local privacy laws. And: Don't tell people on the internet which service you are using. 
+
+You can get yourself a second VPN account with a diﬀerent provider you access through a VM. That way VPN#1 only knows your IP-address but not the content of your communication and VPN#2 knows the content but not your IP-address.
+
+
+
+**Don't try to use a free VPN**. Remember: If you're not paing for it - you are the product. You can also run your own VPN by using a cloud server as your traﬃc exit point, if you trust your cloud provider more than any particular VPN company.
+
+**FBI urging deletion of MaskVPN, DewVPN, PaladinVPN, ProxyGate, ShieldVPN, and ShineVPN**
+
+***Check your devices for the traces of 911 S5, “likely the 
+world’s largest botnet ever” dismantled by the Federal Bureau of 
+Investigation (FBI), and delete the free VPNs used as cybercrime 
+infrastructure. Here’s how to do it.***
+
+The 911 S5 was one of the largest residential proxy services and 
+botnets, which collected over 19 million compromised IP addresses in 
+over 190 countries. Confirmed victim losses amounted to billions of 
+dollars, Cybernews.
+
+Despite the takedown of the network and its operators, many devices remain infected with malware that appears as a “**free VPN**”.
+
+# The Web
+
 If for some unimaginable reason you want to use the "real" internet wink - you now are equipped with a conﬁguration which will hopefully make this a much more secure endeavour. But still: Browsing the internet and downloading stuﬀ is the greatest vulnerability to a linux-machine. So use some common sense. wink
 
-RSS-Feeds
+# RSS-Feeds
+
 Please be aware that using RSS-feeds can be used to track you and the information-sources you are using. Often RSS-feeds are managed through 3rd-party providers and not the by the original service you are using. Web-bugs are commonly used in RSS-tracking. Also your IP-address and other available browser-info will be recorded. Even when you use a text-based desktop-feedreader such as newsbeuter - which mitigates tracking though web-bugs and redirects - you still leave your IP- address. To circumvent that you would want to use a VPN or TOR when fetching your RSS-updates.
 
 If you want to learn more about RSS-tracking read this article.
 
-Secure Mail-Providers
+# Secure Mail-Providers
+
 Please consider using a secure email-provider and encourage your friends and contacts to do the same. All your anonymization is worthless when you communicate conﬁdential information in an unencrypted way with someone who is using gmx, gmail or any other crappy provider. (This also applies if you're contemplating setting up your own mail-server.)
 
 If possible, encrypt everything, but especially conﬁdential stuﬀ, using gpg/enigmail.
@@ -1204,13 +1276,11 @@ countermail.com (SSL, SMTP, IMAP, POP)
 See this Review riseup.org
 You need to prove that you are some kind of activist-type to get an account with them. So I didn't bother to check out their security. This is how they present themselves: Riseup wrote:
 
-<7>The Riseup Collective is an autonomous body based in Seattle with collective members world wide. Our purpose is to aid in the creation of a free society, a world with freedom from want and freedom of expression, a world without oppression or hierarchy, where power is shared equally. We do this by providing communication and computer resources to allies engaged in struggles against capitalism and other forms of oppression.
+The Riseup Collective is an autonomous body based in Seattle with collective members world wide. Our purpose is to aid in the creation of a free society, a world with freedom from want and freedom of expression, a world without oppression or hierarchy, where power is shared equally. We do this by providing communication and computer resources to allies engaged in struggles against capitalism and other forms of oppression.
 
-Edit: I changed my mind and will not comment on Riseup. It will have its use for some people and as this is a technical manual I edited out my political criticism to keep it that way.
+**Edit**: I changed my mind and will not comment on Riseup. It will have its use for some people and as this is a technical manual I edited out my political criticism to keep it that way.
 
-
-
-Disposable Mail-Addresses
+# Disposable Mail-Addresses
 
 Sometimes you need to register for a service and don't want to hand out your real mail-address. Setting up a new one also is a nuisance. That's where disposable mail-addresses come in. There is a ﬁrefox-addon named Bloody Vikings that automatically generates them for you. If you rather want to do that manually you can use some of these providers:
 
@@ -1235,10 +1305,12 @@ Clients with native OTR support:
 
     • Jitsi
     • Climm
+
 Clients with OTR support through Plugins:
 
     • Pidgin
     • Kopete
+
 XMPP generally supports OTR.
 
 Here you ﬁnd a tutorial on how to use OTR with Pidgin.
@@ -1287,7 +1359,8 @@ Diaspora - but there are some doubts - or I'd better say: questions regarding di
 
 But it is certainly a better choice than Facebook.
 
-Passwords
+# Passwords
+
 Always make sure to use good passwords. To generate secure passwords you can use:
 pwgen
 
@@ -1324,7 +1397,7 @@ Do not use any vowels so as to avoid accidental nasty words
 
 Example:
 
-$ pwgen 24 -y
+`$ pwgen 24 -y`
 
 Pwgen will now give you a list of password with 24 digits using at least one special character.
 
@@ -1340,7 +1413,7 @@ KeePass stores all kinds of password in an AES/Twoﬁsh encrypted database and i
 
 To install:
 
-$ sudo apt-get install keepass2
+`$ sudo apt-get install keepass2`
 
 A guide on how to use it can be found here.
 
@@ -1390,10 +1463,7 @@ Edit: Apparently I can edit the hell out of this post. wink So I will be constan
 I will also work on migrating this guide into the #!-wiki in the future. He probably never did, so
 tinfoil-hat did
 
-ATTACKS DICTONARY
-
-
-Phishing
+# ATTACKS DICTONARY
 
     Email Phishing: Deceptive emails sent en masse to trick recipients into revealing sensitive information or downloading malware. Often impersonates legitimate entities like banks or social media platforms.
     Spear Phishing: Targeted phishing attacks tailored to specific individuals or organizations. Attackers conduct thorough research to personalize the phishing messages, increasing the likelihood of success.
@@ -1425,7 +1495,7 @@ Malware
 
 DNS spoofing
 
-	With Domain Name System (DNS) spoofing, a hacker alters DNS records to send traffic to a fake or “spoofed” website. Once on the fraudulent site, the victim may enter sensitive information that can be used or sold by the hacker. The hacker may also construct a poor-quality site with derogatory or inflammatory content to make a competitor company look bad.
+    With Domain Name System (DNS) spoofing, a hacker alters DNS records to send traffic to a fake or “spoofed” website. Once on the fraudulent site, the victim may enter sensitive information that can be used or sold by the hacker. The hacker may also construct a poor-quality site with derogatory or inflammatory content to make a competitor company look bad.
 
 Session hijacking
 
@@ -1445,25 +1515,22 @@ Eavesdropping attacks involve the bad actor intercepting traffic as it is sent t
 
 Birthday attack
 
-	In a birthday attack, an attacker abuses a security feature: hash algorithms, which are used to verify the authenticity of messages. The hash algorithm is a digital signature, and the receiver of the message checks it before accepting the message as authentic. If a hacker can create a hash that is identical to what the sender has appended to their message, the hacker can simply replace the sender’s message with their own. The receiving device will accept it because it has the right hash.
-
+    In a birthday attack, an attacker abuses a security feature: hash algorithms, which are used to verify the authenticity of messages. The hash algorithm is a digital signature, and the receiver of the message checks it before accepting the message as authentic. If a hacker can create a hash that is identical to what the sender has appended to their message, the hacker can simply replace the sender’s message with their own. The receiving device will accept it because it has the right hash.
 
 Common types of wireless network attacks
 
-	Packet Sniffing: Involves capturing data packets transmitted over a wireless network. Attackers use packet sniffers to intercept sensitive information, such as login credentials or personal data, contained within unencrypted network traffic.
-	Rogue Access Points: Unauthorized access points set up by attackers to mimic legitimate networks. Users unknowingly connect to these rogue APs, allowing attackers to intercept their traffic or launch further attacks.
-	Wi-Fi Phishing and Evil Twins: Attackers set up fake Wi-Fi networks with names similar to legitimate ones, tricking users into connecting to them. Once connected, attackers can intercept users' data or manipulate their internet traffic for malicious purposes.
-	Spoofing Attacks: Involve impersonating legitimate devices or networks to deceive users or gain unauthorized access. MAC address spoofing, for example, involves changing the MAC address of a device to impersonate another device on the network.
-	Encryption Cracking: Attempts to bypass or break the encryption protocols used to secure wireless networks. Attackers use tools like brute force attacks or dictionary attacks to crack weak or improperly configured encryption keys.
-	Man-in-the-Middle (MitM) Attacks: Attackers intercept and manipulate communication between two parties without their knowledge. MitM attacks on wireless networks can capture sensitive information, inject malicious content into communication, or impersonate legitimate users.
-	Denial of Service (DoS) Attacks: Overwhelm a wireless network with a high volume of traffic or requests, causing it to become unavailable to legitimate users. DoS attacks disrupt network connectivity and can lead to service outages or downtime.
-	Wi-Fi Jamming: Involves transmitting interference signals to disrupt or block wireless communication within a specific area. Wi-Fi jamming attacks can prevent users from connecting to wireless networks or cause existing connections to drop.
-	War Driving Attacks: Attackers drive around with a device equipped to detect and exploit wireless networks. They can identify vulnerable networks, capture data packets, or launch further attacks against the networks they encounter.
-	War Shipping Attacks: Similar to war driving, but conducted using shipping containers equipped with wireless scanning equipment. Attackers deploy these containers in strategic locations to conduct surveillance or launch attacks on nearby wireless networks.
-	Theft and Tampering: Physical attacks targeting wireless network infrastructure, such as stealing or tampering with wireless routers, access points, or antennas. Attackers may steal equipment for resale or tamper with it to gain unauthorized access to the network.
-	Default Passwords and SSIDs: Exploiting default or weak passwords and service set identifiers (SSIDs) to gain unauthorized access to wireless networks. Attackers can easily guess or obtain default credentials to compromise poorly secured networks.
-
-
+    Packet Sniffing: Involves capturing data packets transmitted over a wireless network. Attackers use packet sniffers to intercept sensitive information, such as login credentials or personal data, contained within unencrypted network traffic.
+    Rogue Access Points: Unauthorized access points set up by attackers to mimic legitimate networks. Users unknowingly connect to these rogue APs, allowing attackers to intercept their traffic or launch further attacks.
+    Wi-Fi Phishing and Evil Twins: Attackers set up fake Wi-Fi networks with names similar to legitimate ones, tricking users into connecting to them. Once connected, attackers can intercept users' data or manipulate their internet traffic for malicious purposes.
+    Spoofing Attacks: Involve impersonating legitimate devices or networks to deceive users or gain unauthorized access. MAC address spoofing, for example, involves changing the MAC address of a device to impersonate another device on the network.
+    Encryption Cracking: Attempts to bypass or break the encryption protocols used to secure wireless networks. Attackers use tools like brute force attacks or dictionary attacks to crack weak or improperly configured encryption keys.
+    Man-in-the-Middle (MitM) Attacks: Attackers intercept and manipulate communication between two parties without their knowledge. MitM attacks on wireless networks can capture sensitive information, inject malicious content into communication, or impersonate legitimate users.
+    Denial of Service (DoS) Attacks: Overwhelm a wireless network with a high volume of traffic or requests, causing it to become unavailable to legitimate users. DoS attacks disrupt network connectivity and can lead to service outages or downtime.
+    Wi-Fi Jamming: Involves transmitting interference signals to disrupt or block wireless communication within a specific area. Wi-Fi jamming attacks can prevent users from connecting to wireless networks or cause existing connections to drop.
+    War Driving Attacks: Attackers drive around with a device equipped to detect and exploit wireless networks. They can identify vulnerable networks, capture data packets, or launch further attacks against the networks they encounter.
+    War Shipping Attacks: Similar to war driving, but conducted using shipping containers equipped with wireless scanning equipment. Attackers deploy these containers in strategic locations to conduct surveillance or launch attacks on nearby wireless networks.
+    Theft and Tampering: Physical attacks targeting wireless network infrastructure, such as stealing or tampering with wireless routers, access points, or antennas. Attackers may steal equipment for resale or tamper with it to gain unauthorized access to the network.
+    Default Passwords and SSIDs: Exploiting default or weak passwords and service set identifiers (SSIDs) to gain unauthorized access to wireless networks. Attackers can easily guess or obtain default credentials to compromise poorly secured networks.
 
 Denial of Service (DoS) and Distributed Denial of Service (DDoS)
 
@@ -1516,14 +1583,13 @@ Injection Attacks
         Out-of-Band SQL Injection: Exploit vulnerabilities to establish out-of-band communication channels with the attacker-controlled server.
 
 Zero-Day and 
- 		Zero-Day Attacks: Exploit vulnerabilities in software or hardware that are unknown to the vendor or have not yet been patched.
+         Zero-Day Attacks: Exploit vulnerabilities in software or hardware that are unknown to the vendor or have not yet been patched.
         Zero-Day Vulnerability Exploits: Use previously unknown vulnerabilities to gain unauthorized access to systems or execute arbitrary code.
         Zero-Day Malware: Malicious software that leverages zero-day vulnerabilities to infect systems or steal sensitive information.
         Zero-Day Worms: Self-propagating malware that spreads rapidly using zero-day vulnerabilities to infect and compromise networked devices.
 
-
 Man-in-the-Middle (MitM) Attacks
-  
+
     Man-in-the-Middle (MitM): Intercept and manipulate communication between two parties without their knowledge.
         IP Spoofing: Falsify source IP addresses to impersonate legitimate devices or networks.
         DNS Spoofing: Manipulate DNS resolution to redirect users to malicious websites or servers.
