@@ -89,6 +89,7 @@
     • 23 Live-CDs and VM-Images that focus on security and anonymity
     • 24 Further Info/Tools
         ◦ 24.1 German only:
+    • 25 Distrobox
 
 # Introduction
 
@@ -1463,6 +1464,83 @@ If you find any error in this guide please don't hesitate to reply with an expla
 Edit: Apparently I can edit the hell out of this post. wink So I will be constantly updating this guide in the future. I already scrambled together all the info I found noteworthy from the #! Privacy and Security Thread. So you should in theory find everything you need from there in this manual, too. But you know how personal opinions differ. So please raise your hand if you find I missed something.
 I will also work on migrating this guide into the #!-wiki in the future. He probably never did, so
 tinfoil-hat did
+
+### What is Distrobox?
+
+**Distrobox** is a tool that allows you to easily create and manage containerized environments based on different Linux distributions within your current Linux system. It leverages existing container technologies (like Docker or Podman) to provide a consistent and isolated environment for running applications and tools from different distributions.
+
+### Key Features:
+
+- **Multi-Distro Support:** Run containers based on various Linux distributions (e.g., Ubuntu, Arch, Fedora) alongside your native environment.
+- **Seamless Integration:** Use GUI applications and access the same filesystem as your host, providing a near-native experience.
+- **Easy Management:** Simple commands to create, enter, and manage containers.
+
+### Practical Use Cases:
+
+- **Development:** Test applications in environments identical to your production servers.
+- **Isolation:** Run potentially conflicting software without affecting your main system.
+- **Experimentation:** Try out new distributions and software safely.
+
+### Commands Overview:
+
+1. **Install Distrobox:**
+   ```sh
+   sudo apt update
+   sudo apt install distrobox
+   ```
+
+2. **Create a Distrobox:**
+   - Ubuntu:
+     ```sh
+     distrobox-create --name ubuntu-box --image ubuntu:latest
+     ```
+   - Arch:
+     ```sh
+     distrobox-create --name arch-box --image archlinux:latest
+     ```
+   - Fedora:
+     ```sh
+     distrobox-create --name fedora-box --image fedora:latest
+     ```
+
+3. **Enter the Distrobox:**
+   - Ubuntu:
+     ```sh
+     distrobox-enter --name ubuntu-box
+     ```
+   - Arch:
+     ```sh
+     distrobox-enter --name arch-box
+     ```
+   - Fedora:
+     ```sh
+     distrobox-enter --name fedora-box
+     ```
+
+4. **Install Packages and Run Commands:**
+   - **Ubuntu:**
+     ```sh
+     sudo apt update && sudo apt install <package>
+     ```
+   - **Arch:**
+     ```sh
+     sudo pacman -Syu <package>
+     ```
+   - **Fedora:**
+     ```sh
+     sudo dnf install <package>
+     ```
+
+5. **Exit Distrobox:**
+   ```sh
+   exit
+   ```
+
+6. **Delete Distrobox:**
+   ```sh
+   distrobox-rm --name <box-name>
+   ```
+
 
 # ATTACKS DICTIONARY
 
