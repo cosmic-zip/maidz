@@ -244,7 +244,17 @@
             "description": "Capture only one packet from/to a specified IP address on a specified network interface.",
             "name": "capture.one.from_ip",
             "command": "tcpdump -i @@interface host @@ip -c 1 -w capture.pcap"
-        }
+        },
+        {
+            "description": "Create a disk dump from a specified input device to an output file.",
+            "name": "disk.dump",
+            "command": "dd if=@@device of=@@file bs=4M"
+        },
+        {
+            "description": "Carve files from a specified disk image using foremost.",
+            "name": "disk.recover",
+            "command": "foremost -i @@image -o @@folder"
+        }       
     ],
     "nuke": [
         {
@@ -435,6 +445,7 @@
         "openssh-server",
         "xattr",
         "libimage-exiftool-perl",
-        "tor"
+        "tor",
+        "foremost"
     ]
 }
