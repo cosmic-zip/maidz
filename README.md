@@ -1541,6 +1541,108 @@ tinfoil-hat did
    distrobox-rm --name <box-name>
    ```
 
+# Digital Forensics: 
+
+Cloning Disks, Decrypting and Cracking LUKS2 Partitions, and Recovering Files. This section provides a guide on using the tool Foremost, cloning a disk, decrypting and cracking LUKS2 partitions, and recovering files.
+
+#### Foremost: A File Carving Tool
+
+Foremost is an open-source command-line tool designed for data recovery by file carving. It extracts files based on their headers, footers, and internal data structures.
+
+**Basic Usage:**
+1. **Install Foremost**: 
+   ```bash
+   sudo apt-get install foremost
+   ```
+2. **Run Foremost**: 
+   ```bash
+   foremost -i /path/to/disk/image -o /path/to/output/directory
+   ```
+3. **Review Output**: The recovered files will be stored in the specified output directory.
+
+#### Cloning a Disk
+
+Cloning a disk is essential in forensic analysis to create an exact copy for examination without altering the original data.
+
+**Tools**: `dd`, FTK Imager, Clonezilla
+
+**Basic Usage with `dd`:**
+1. **Identify Source and Destination**:
+   ```bash
+   sudo fdisk -l
+   ```
+2. **Clone Disk**:
+   ```bash
+   sudo dd if=/dev/sdX of=/path/to/destination.img bs=4M status=progress
+   ```
+   - `if` specifies the input file (source disk).
+   - `of` specifies the output file (destination image).
+
+#### Decrypting and Cracking LUKS2 Partitions
+
+Linux Unified Key Setup (LUKS) is a standard for disk encryption in Linux. LUKS2 is the latest version offering enhanced security features.
+
+**Tools**: `cryptsetup`, `john the ripper`, `hashcat`
+
+**Basic Usage for Decryption**:
+1. **Open the Encrypted Partition**:
+   ```bash
+   sudo cryptsetup luksOpen /dev/sdX1 decrypted_partition
+   ```
+2. **Mount the Decrypted Partition**:
+   ```bash
+   sudo mount /dev/mapper/decrypted_partition /mnt
+   ```
+
+**Cracking LUKS2 Partitions**:
+1. **Extract LUKS Header**:
+   ```bash
+   sudo cryptsetup luksHeaderBackup /dev/sdX1 --header-backup-file luks_header.img
+   ```
+2. **Analyze the LUKS Header**:
+   ```bash
+   sudo cryptsetup luksDump /dev/sdX1
+   ```
+3. **Extract Key Slots**:
+   ```bash
+   dd if=/dev/sdX1 of=keyslotX.bin bs=512 count=1 skip=<key_slot_offset>
+   ```
+4. **Brute Force Attack with `John the Ripper`**:
+   ```bash
+   luks2john luks_header.img > luks_hashes.txt
+   john --wordlist=/path/to/wordlist luks_hashes.txt
+   ```
+5. **Brute Force Attack with `Hashcat`**:
+   ```bash
+   hashcat -m 14600 luks_hashes.txt /path/to/wordlist
+   ```
+
+6. **Decrypt the LUKS Partition**:
+   ```bash
+   sudo cryptsetup luksOpen /dev/sdX1 decrypted_partition
+   sudo mount /dev/mapper/decrypted_partition /mnt
+   ```
+
+#### Recovering Files
+
+File recovery involves restoring deleted, corrupted, or lost files from storage devices.
+
+**Tools**: Foremost, TestDisk, PhotoRec
+
+**Basic Usage with PhotoRec**:
+1. **Install PhotoRec**:
+   ```bash
+   sudo apt-get install testdisk
+   ```
+2. **Run PhotoRec**:
+   ```bash
+   sudo photorec
+   ```
+3. **Select Disk and File Types**: Follow the on-screen prompts to select the disk, choose file types to recover, and specify the output directory.
+
+### Conclusion
+
+Digital forensics relies on precise methods and tools to ensure accurate and reliable data recovery and analysis. Foremost is a powerful file carving tool, while disk cloning and LUKS2 decryption are fundamental steps in forensic investigations. Proper handling and use of tools like `John the Ripper` and `Hashcat` can aid in recovering lost passphrases and accessing encrypted data. These processes ensure that forensic analysts can effectively manage and analyze digital evidence.
 
 # ATTACKS DICTIONARY
 
