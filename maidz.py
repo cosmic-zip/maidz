@@ -32,8 +32,22 @@ def import_bank():
     except json.JSONDecodeError as e:
         print(f"JSON::ERROR {e}")
 
-def puts(string: str):
-    print(f"\033[1m🟣 {string}\033[0m")
+def puts(string: str, color: str = ""):
+    color_emojis = {
+        'purple': '🟣',
+        'red': '🔴',
+        'green': '🟢',
+        'yellow': '🟡',
+        'blue': '🔵',
+        'orange': '🟠',
+        'white': '⚪',
+        'black': '⚫',
+    }
+    emoji = ""
+    if color != "":
+        emoji = color_emojis.get(color)
+    print(f"\033[1m{emoji} {string}\033[0m")
+
 
 def key_value(term: str, args: list):
 
@@ -97,15 +111,17 @@ def exec_batch(chunk: dict, args: list, delay: int = 0):
             time.sleep(delay)
         print(out)
 
-def manual():
+def help(verbose: bool = False):
 
     data = import_bank()
     data = data["general"]
 
     for d in data:
-        puts(d['name'])
-        puts(d['description'])
-        print(f"\n\t{d['command']}\n")
+        puts(d['name'], "yellow")
+        puts(f"\n\t{d['description']}")
+        if verbose:
+            print(f"\n\t{d['command']}\n")
+        print("")
 
 def install_deps():
     deps = import_bank()
@@ -120,8 +136,12 @@ def shell(args):
         sakuya()
         return 255
     
-    if args[1] == "manual":
-        manual()
+    if args[1] == "help":
+        verbose = False
+        for x in args:
+            if x == "-v":
+                verbose = True
+        help(verbose)
     elif args[1] == "sakuya":
         sakuya()
     elif args[1] == "install":

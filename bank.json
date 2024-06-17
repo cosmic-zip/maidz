@@ -254,7 +254,7 @@
             "description": "Carve files from a specified disk image using foremost.",
             "name": "disk.recover",
             "command": "foremost -i @@image -o @@folder"
-        }       
+        }
     ],
     "nuke": [
         {
