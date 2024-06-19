@@ -23,7 +23,7 @@ import json, os, sys, time, re
 
 
 def sakuya():
-    os.system("chafa -s 90x90 sakuya_izayoi.png")
+    os.system("chafa -s 90x90 assets/sakuya_izayoi.png")
     print(
         "\n\033[1m\t[maidz] Cybersecurity companion\n\tUse maidz help to see all options\033[0m\n"
     )
