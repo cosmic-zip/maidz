@@ -289,13 +289,13 @@ SecOps integrates security deeply within IT operations, creating a resilient and
 
 ## Darknet as usual
 
-Now for some history. Many years ago, the dark net was really popular. I think it was around 2017 to 2018. Every friend I had in high school had some contact with the Tor network. We didn't do anything, just larping around dark net forums, red rooms, and other myths of the darknet. Silk Road was still in the news for us, and there were many marketplaces full of scams, but who cared? It was magical, entering a new world.
+Now for some history. Many years ago, the darknet was really popular, around 2017–2018. Every friend I had in high school had some contact with the Tor network. We didn't do much, just lurking around darknet forums, red rooms, and other myths of the darknet. Silk Road was still in the news for us, and there were many marketplaces full of scams, but who cared? It was magical to enter a new world.
 
-Anyway, the terms "bad opsec" and "good opsec" were a thing in all content about the dark net, but what do they mean?
+Anyway, the terms "bad opsec" and "good opsec" were common in all content about the darknet, but what do they mean?
 
-Some random hacker was arrested because bad opsec led them to leak their personal email address. Examples like this are good to explain that hacking requires more than just sitting in front of a computer all day. It has geographical and logistical aspects.
+Some random hackers were arrested because bad opsec led them to leak their personal email addresses. Examples like this show that hacking requires more than just sitting in front of a computer all day. It has geographical and logistical aspects.
 
-The junction of location, physical measures, and digital self-defense, having a plan that covers a defined scope of actions over a target, and thinking before acting, make up OPSEC. Whether it's good or bad depends on the hacker's heuristics.
+The combination of location, physical measures, and digital self-defense, having a plan that covers a defined scope of actions over a target, and thinking before acting make up OPSEC. Whether it's good or bad depends on the hacker's heuristics.
 
 ## OPSEC
 
