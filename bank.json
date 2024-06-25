@@ -446,6 +446,7 @@
         "xattr",
         "libimage-exiftool-perl",
         "tor",
-        "foremost"
+        "foremost",
+        "chafa"
     ]
 }

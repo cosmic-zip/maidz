@@ -19,33 +19,10 @@
 # -----------------------------------------------------------------------------#
 
 
-import json, os, sys, time, re
+import json, os, sys, time, re, subprocess
 
-import subprocess
-
-def wrap(text, width=160):
-    wrapped_lines = []
-    for line in text.split('\n'):
-        while len(line) > width:
-            wrapped_lines.append(line[:width])
-            line = line[width:]
-        wrapped_lines.append(line)
-    return '\n'.join(wrapped_lines)
-
-def exec(command):
-    puts(command["name"])
-    result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
-    
-    if result.returncode == 0:
-        output = result.stdout
-        wrapped_output = wrap(output)
-        print(wrapped_output)
-    else:
-        puts(f"[error] :: {result.stderr}", "red")
-
-
-def sakuya():
-    os.system("chafa -s 90x90 assets/sakuya_izayoi.png")
+def banner():
+    os.system("chafa assets/maidz.png")
     print(
         """
         \n\033[1m
@@ -80,6 +57,25 @@ def puts(string: str, color: str = ""):
         emoji = color_emojis.get(color)
     print(f"\033[1m{emoji} {string}\033[0m")
 
+def wrap(text, width=160):
+    wrapped_lines = []
+    for line in text.split('\n'):
+        while len(line) > width:
+            wrapped_lines.append(line[:width])
+            line = line[width:]
+        wrapped_lines.append(line)
+    return '\n'.join(wrapped_lines)
+
+def exec(command):
+    puts(command["name"], "purple")
+    result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
+    
+    if result.returncode == 0:
+        output = result.stdout
+        wrapped_output = wrap(output)
+        print(wrapped_output)
+    else:
+        puts(f"[error] :: {result.stderr}", "red")
 
 def key_value(term: str, args: list):
 
@@ -158,7 +154,7 @@ def install_deps():
 def shell(args):
 
     if len(args) < 2:
-        sakuya()
+        banner()
         return 255
 
     if args[1] == "help":
@@ -167,8 +163,8 @@ def shell(args):
             if x == "-v":
                 verbose = True
         help(verbose)
-    elif args[1] == "sakuya":
-        sakuya()
+    elif args[1] == "banner":
+        banner()
     elif args[1] == "install":
         install_deps()
     elif args[1] == "query":
