@@ -21,11 +21,38 @@
 
 import json, os, sys, time, re
 
+import subprocess
+
+def wrap(text, width=160):
+    wrapped_lines = []
+    for line in text.split('\n'):
+        while len(line) > width:
+            wrapped_lines.append(line[:width])
+            line = line[width:]
+        wrapped_lines.append(line)
+    return '\n'.join(wrapped_lines)
+
+def exec(command):
+    puts(command["name"])
+    result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
+    
+    if result.returncode == 0:
+        output = result.stdout
+        wrapped_output = wrap(output)
+        print(wrapped_output)
+    else:
+        puts(f"[error] :: {result.stderr}", "red")
+
 
 def sakuya():
     os.system("chafa -s 90x90 assets/sakuya_izayoi.png")
     print(
-        "\n\033[1m\t[maidz] Cybersecurity companion\n\tUse maidz help to see all options\033[0m\n"
+        """
+        \n\033[1m
+            [maidz] Cybersecurity companion
+            Use maidz help to see all options
+        \033[0m
+        """
     )
 
 
@@ -98,13 +125,7 @@ def query(data: dict, args: list):
     return {"name": name, "command": content, "description": description}
 
 
-def exec(command: str) -> int:
-    puts(command["name"])
-    print(command["command"])
-    return 1
-
-
-def exec_batch(chunk: dict, args: list, delay: int = 0):
+def exec_batch(chunk: dict, args: list, delay = None):
 
     for q in chunk:
         out = query(chunk, args)
