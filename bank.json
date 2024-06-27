@@ -146,6 +146,11 @@
             "command": "ss -tupanr"
         },
         {
+            "description": "Simple mac address loockup",
+            "name": "map.mac",
+            "command": "cat ./apron/general/mac_address.list | grep @@mac; echo"
+        },
+        {
             "description": "Remove all firewall rules non-resible",
             "name": "firewall.flush",
             "command": "ip6tables -F && iptables -F"
