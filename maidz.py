@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------#
 
 
-import json, os, sys, time, re, subprocess
+import json, os, sys, time, re, subprocess, platform
 
 def banner():
     os.system("chafa assets/maidz.png")
@@ -150,6 +150,69 @@ def install_deps():
         puts(f"PKG :: {pkg}")
         os.system(f"sudo apt install {pkg} -y")
 
+def get_ram_usage():
+    with open('/proc/meminfo', 'r') as f:
+        lines = f.readlines()
+    mem_total = int(lines[0].split()[1])
+    mem_free = int(lines[1].split()[1])
+    mem_available = int(lines[2].split()[1])
+    return mem_total, mem_free, mem_available
+
+def get_desktop_environment():
+    desktop_session = os.environ.get('DESKTOP_SESSION')
+    if desktop_session:
+        if desktop_session == 'ubuntu':
+            return 'GNOME'
+        return desktop_session
+    elif os.environ.get('GNOME_DESKTOP_SESSION_ID'):
+        return 'GNOME'
+    elif os.environ.get('KDE_FULL_SESSION'):
+        return 'KDE'
+    elif os.environ.get('XDG_CURRENT_DESKTOP'):
+        return os.environ.get('XDG_CURRENT_DESKTOP')
+    else:
+        return 'Unknown'
+
+
+def neolain():
+
+    with open('/proc/loadavg', 'r') as f:
+        load_avg = f.readline().strip().split()[:3]
+    cpu_load = tuple(float(x) for x in load_avg)
+
+    mem_total, mem_free, mem_available = get_ram_usage()
+    os_name = platform.system()
+    kernel_version = platform.release()
+    shell = os.environ.get('SHELL')
+    desktop_environment = get_desktop_environment()
+
+    var = f"""
+    
+         |\\---/|
+         | ,_, |
+          \\_`_/-..----.
+         ___/ `   ' ,""+ \\  MaidZ
+        (__...'   __\\    |`.___.';
+          (_,...'(_,.`__)/'.....+
+
+        {f"⬥ CPU:{cpu_load[1]}"}
+        {f"⬥ Total RAM: {int(mem_total/1024)} MB"}
+        {f"⬥ Free RAM: {int(mem_free/1024)} MB"}
+        {f"⬥ Available RAM: {int(mem_available/1024)} MB"}
+        {f"⬥ OS Name: {os_name}"}
+        {f"⬥ Kernel Version: {kernel_version}"}
+        {f"⬥ Shell: {shell}"}
+        {f"⬥ Desktop Environment: {desktop_environment}"}
+
+        ☺  ☻  ♥  ♦  ♣  ♠  •  ◘
+        ○  ◙  ♂  ♀  ♪  ♫  ☼  ►
+        ◄  ↕  ‼  ¶  §  ▬  ↨  ↑
+        ↓  →  ←  ∟  ↔  ▲  ▼  *
+    
+    """
+
+    puts(var)
+
 
 def shell(args):
 
@@ -165,6 +228,8 @@ def shell(args):
         help(verbose)
     elif args[1] == "banner":
         banner()
+    elif args[1] == "status":
+        neolain()
     elif args[1] == "install":
         install_deps()
     elif args[1] == "query":
