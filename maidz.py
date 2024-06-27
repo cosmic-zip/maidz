@@ -19,7 +19,18 @@
 # -----------------------------------------------------------------------------#
 
 
-import json, os, sys, time, re
+import json, os, sys, time, re, subprocess, platform
+
+def banner():
+    os.system("chafa assets/maidz.png")
+    print(
+        """
+        \n\033[1m
+            [maidz] Cybersecurity companion
+            Use maidz help to see all options
+        \033[0m
+        """
+    )
 
 
 def sakuya():
@@ -53,6 +64,25 @@ def puts(string: str, color: str = ""):
         emoji = color_emojis.get(color)
     print(f"\033[1m{emoji} {string}\033[0m")
 
+def wrap(text, width=160):
+    wrapped_lines = []
+    for line in text.split('\n'):
+        while len(line) > width:
+            wrapped_lines.append(line[:width])
+            line = line[width:]
+        wrapped_lines.append(line)
+    return '\n'.join(wrapped_lines)
+
+def exec(command):
+    puts(command["name"], "purple")
+    result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
+    
+    if result.returncode == 0:
+        output = result.stdout
+        wrapped_output = wrap(output)
+        print(wrapped_output)
+    else:
+        puts(f"[error] :: {result.stderr}", "red")
 
 def key_value(term: str, args: list):
 
@@ -98,13 +128,7 @@ def query(data: dict, args: list):
     return {"name": name, "command": content, "description": description}
 
 
-def exec(command: str) -> int:
-    puts(command["name"])
-    print(command["command"])
-    return 1
-
-
-def exec_batch(chunk: dict, args: list, delay: int = 0):
+def exec_batch(chunk: dict, args: list, delay = None):
 
     for q in chunk:
         out = query(chunk, args)
@@ -133,11 +157,74 @@ def install_deps():
         puts(f"PKG :: {pkg}")
         os.system(f"sudo apt install {pkg} -y")
 
+def get_ram_usage():
+    with open('/proc/meminfo', 'r') as f:
+        lines = f.readlines()
+    mem_total = int(lines[0].split()[1])
+    mem_free = int(lines[1].split()[1])
+    mem_available = int(lines[2].split()[1])
+    return mem_total, mem_free, mem_available
+
+def get_desktop_environment():
+    desktop_session = os.environ.get('DESKTOP_SESSION')
+    if desktop_session:
+        if desktop_session == 'ubuntu':
+            return 'GNOME'
+        return desktop_session
+    elif os.environ.get('GNOME_DESKTOP_SESSION_ID'):
+        return 'GNOME'
+    elif os.environ.get('KDE_FULL_SESSION'):
+        return 'KDE'
+    elif os.environ.get('XDG_CURRENT_DESKTOP'):
+        return os.environ.get('XDG_CURRENT_DESKTOP')
+    else:
+        return 'Unknown'
+
+
+def neolain():
+
+    with open('/proc/loadavg', 'r') as f:
+        load_avg = f.readline().strip().split()[:3]
+    cpu_load = tuple(float(x) for x in load_avg)
+
+    mem_total, mem_free, mem_available = get_ram_usage()
+    os_name = platform.system()
+    kernel_version = platform.release()
+    shell = os.environ.get('SHELL')
+    desktop_environment = get_desktop_environment()
+
+    var = f"""
+    
+         |\\---/|
+         | ,_, |
+          \\_`_/-..----.
+         ___/ `   ' ,""+ \\  MaidZ
+        (__...'   __\\    |`.___.';
+          (_,...'(_,.`__)/'.....+
+
+        {f"⬥ CPU:{cpu_load[1]}"}
+        {f"⬥ Total RAM: {int(mem_total/1024)} MB"}
+        {f"⬥ Free RAM: {int(mem_free/1024)} MB"}
+        {f"⬥ Available RAM: {int(mem_available/1024)} MB"}
+        {f"⬥ OS Name: {os_name}"}
+        {f"⬥ Kernel Version: {kernel_version}"}
+        {f"⬥ Shell: {shell}"}
+        {f"⬥ Desktop Environment: {desktop_environment}"}
+
+        ☺  ☻  ♥  ♦  ♣  ♠  •  ◘
+        ○  ◙  ♂  ♀  ♪  ♫  ☼  ►
+        ◄  ↕  ‼  ¶  §  ▬  ↨  ↑
+        ↓  →  ←  ∟  ↔  ▲  ▼  *
+    
+    """
+
+    puts(var)
+
 
 def shell(args):
 
     if len(args) < 2:
-        sakuya()
+        banner()
         return 255
 
     if args[1] == "help":
@@ -146,8 +233,10 @@ def shell(args):
             if x == "-v":
                 verbose = True
         help(verbose)
-    elif args[1] == "sakuya":
-        sakuya()
+    elif args[1] == "banner":
+        banner()
+    elif args[1] == "status":
+        neolain()
     elif args[1] == "install":
         install_deps()
     elif args[1] == "query":

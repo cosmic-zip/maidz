@@ -473,6 +473,7 @@
         "tor",
         "foremost",
         "netcat-traditional",
-        "sqlmap"
+        "sqlmap",
+        "chafa"
     ]
 }
