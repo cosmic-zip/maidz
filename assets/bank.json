@@ -146,11 +146,6 @@
             "command": "ss -tupanr"
         },
         {
-            "description": "Simple mac address loockup",
-            "name": "map.mac",
-            "command": "cat ./apron/general/mac_address.list | grep @@mac; echo"
-        },
-        {
             "description": "Remove all firewall rules non-resible",
             "name": "firewall.flush",
             "command": "ip6tables -F && iptables -F"
@@ -197,18 +192,13 @@
         },
         {
             "description": "Generates a long random username and password, then performs a POST request to a specified domain with the generated credentials.",
-            "name": "curl.longpass",
+            "name": "dos.longpass",
             "command": "curl -X POST @@domain -H 'Content-Type: application/json' -d '{\"username\": \"random_user_\"$(openssl rand -base64 @@size),\"password\": \"random_password_\"$(openssl rand -base64 @@size)}'"
         },
         {
             "description": "Sends a POST request with JSON data containing a 'main' field and a message field specified by @@message to a specified domain.",
-            "name": "curl.text",
+            "name": "span.text",
             "command": "curl -X POST -H \"Content-Type: application/json\" -d '{\"main\": \"somename\", \"@@message\": \"somemsg\"}' @@domain"
-        },
-        {
-            "description": "Send N amount of random data to a specified URL using curl.",
-            "name": "curl.sender",
-            "command": "curl -X POST -d \"$(head -c @@size /dev/urandom | base64)\" @@domain"
         },
         {
             "description": "Break ZIP file encryption using Hashcat",
@@ -264,26 +254,6 @@
             "description": "Carve files from a specified disk image using foremost.",
             "name": "disk.recover",
             "command": "foremost -i @@image -o @@folder"
-        },
-        {
-            "description": "Perform a brute-force attack on Telnet service using nmap.",
-            "name": "network.telnet_brute",
-            "command": "nmap -p 23 --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s @@target"
-        },
-        {
-            "description": "Perform a brute-force attack on SSH service using nmap.",
-            "name": "network.ssh_brute",
-            "command": "nmap -p 22 --script ssh-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,ssh-brute.timeout=8s @@target"
-        },
-        {
-            "description": "SQL injection detection and exploitation tool.",
-            "name": "sqlmap",
-            "command": "sqlmap -u @@url"
-        },
-        {
-            "description": "Execute the evil file transfer to host:port ... (tre dots)",
-            "name": "file.transfer",
-            "command": "echo 'execute in the target: nc -l -p @@port > ...' && cat @@file | nc -q 1 @@target @@port"
         }
     ],
     "nuke": [
@@ -476,9 +446,6 @@
         "xattr",
         "libimage-exiftool-perl",
         "tor",
-        "foremost",
-        "netcat-traditional",
-        "sqlmap",
-        "chafa"
+        "foremost"
     ]
 }

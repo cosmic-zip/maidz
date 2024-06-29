@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -----------------------------------------------------------------------------#
-#   MaidZ Cybersecurity companion                                              #
-#   Copyright (C) 2024  Prism-zip                                              #
+#   MaidZ Cybersecurity Companion                                              #
+#   Copyright (C) 2024  cosmic-zip                                             #
 #                                                                              #
 #                                                                              #
 #   This program is free software: you can redistribute it and/or modify       #
@@ -22,7 +22,7 @@
 import json, os, sys, time, re, subprocess, platform
 
 def banner():
-    os.system("chafa assets/maidz.png")
+    os.system("chafa assets/sakuya_izayoi.png")
     print(
         """
         \n\033[1m
@@ -32,17 +32,9 @@ def banner():
         """
     )
 
-
-def sakuya():
-    os.system("chafa -s 90x90 assets/sakuya_izayoi.png")
-    print(
-        "\n\033[1m\t[maidz] Cybersecurity companion\n\tUse maidz help to see all options\033[0m\n"
-    )
-
-
 def import_bank():
     try:
-        with open("bank.json", "r") as bank:
+        with open("assets/bank.json", "r") as bank:
             return json.load(bank)
     except json.JSONDecodeError as e:
         print(f"JSON::ERROR {e}")
@@ -219,6 +211,10 @@ def neolain():
     """
 
     puts(var)
+
+
+def mint(args):
+    pass
 
 
 def shell(args):
