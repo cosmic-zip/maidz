@@ -66,20 +66,23 @@ def wrap(text, width=160):
     return '\n'.join(wrapped_lines)
 
 def exec(command):
-    puts(command["name"], "purple")
-    result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
-    
-    if result.returncode == 0:
-        output = result.stdout
-        wrapped_output = wrap(output)
-        print(wrapped_output)
-    else:
-        puts(f"[error] :: {result.stderr}", "red")
+    try:
+        puts(command["name"], "purple")
+        result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            output = result.stdout
+            wrapped_output = wrap(output)
+            print(wrapped_output)
+        else:
+            puts(f"Error: {result.stderr}", "red")
+    except Exception as err:
+        puts(str(err), "red")
 
 def key_value(term: str, args: list):
 
     if len(args) < 1:
-        print("args are to small")
+        print("Args are to small")
 
     for index, item in enumerate(args):
         if item == term:
@@ -89,7 +92,7 @@ def key_value(term: str, args: list):
             # print(args[index +1])
             return args[index + 1]
 
-    puts(f"no value found for key: {term} :: return empty")
+    puts(f"No value found for key: {term} :: return empty")
     return ""
 
 
@@ -107,7 +110,7 @@ def query(data: dict, args: list):
             description = ctn["description"]
 
     if not content:
-        puts(f"bind not found for {args[1]}")
+        puts(f"Command not found for {args[1]}", "red")
         return None
 
     matches = re.findall(pattern, content)
