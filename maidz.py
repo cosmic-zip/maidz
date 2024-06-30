@@ -247,4 +247,7 @@ def shell(args):
 
 
 if __name__ == "__main__":
-    shell(sys.argv)
+    try:
+        shell(sys.argv)
+    except KeyboardInterrupt:
+        pass
