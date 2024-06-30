@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-"""
-Very simple HTTP server in python for logging requests
-License: MIT License
-Copyright (c) 2023 Miel Donkers
-Copyright (c) 2024 Cosmic Lace
-
-"""
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import logging, json, os
 from datetime import datetime
@@ -61,9 +53,9 @@ class HttpHandler(BaseHTTPRequestHandler):
         self.set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
-def run(server_class=HTTPServer, handler_class=HttpHandler, port=8000):
+def run(server_class=HTTPServer, handler_class=HttpHandler, address="localhost" port=8000):
     logging.basicConfig(level=logging.INFO)
-    server_address = ('localhost', port)
+    server_address = (address, port)
     httpd = server_class(server_address, handler_class)
     logging.info('Starting httpd...\n')
     try:
