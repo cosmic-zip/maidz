@@ -22,7 +22,7 @@
 import json, os, sys, time, re, subprocess, platform
 
 def banner():
-    os.system("chafa assets/sakuya_izayoi.png")
+    os.system("chafa apron/assets/sakuya_izayoi.png")
     print(
         """
         \n\033[1m
@@ -34,7 +34,7 @@ def banner():
 
 def import_bank():
     try:
-        with open("assets/bank.json", "r") as bank:
+        with open("apron/assets/bank.json", "r") as bank:
             return json.load(bank)
     except json.JSONDecodeError as e:
         print(f"JSON::ERROR {e}")
