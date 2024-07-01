@@ -182,7 +182,7 @@ def get_desktop_environment():
         return 'Unknown'
 
 
-def neolain():
+def maidztop():
 
     with open('/proc/loadavg', 'r') as f:
         load_avg = f.readline().strip().split()[:3]
@@ -245,7 +245,7 @@ def shell(args):
     elif args[1] == "banner":
         banner()
     elif args[1] == "status":
-        neolain()
+        maidztop()
     elif args[1] == "install":
         install_deps()
     elif args[1] == "query":
