@@ -97,12 +97,12 @@
         },
         {
             "description": "Extracts and displays all metadata from an image file using exiftool.",
-            "name": "meta.img",
+            "name": "file.meta",
             "command": "exiftool @@file"
         },
         {
             "description": "Removes all metadata from an image to protect privacy",
-            "name": "clean.image",
+            "name": "file.clean.meta",
             "command": "exiftool -all= @@image"
         },
         {
@@ -144,6 +144,11 @@
             "description": "Scan local open connections",
             "name": "map.local",
             "command": "ss -tupanr"
+        },
+        {
+            "description": "Show the current ip address",
+            "name": "map.myip",
+            "command": "curl ip.me"
         },
         {
             "description": "Remove all firewall rules non-resible",

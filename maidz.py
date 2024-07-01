@@ -65,6 +65,11 @@ def wrap(text, width=160):
         wrapped_lines.append(line)
     return '\n'.join(wrapped_lines)
 
+def logfile(log):
+    with open('apron/output/maid_exec_doc.jsonl', 'a') as f:
+        f.write(log)
+        f.close()
+
 def exec(command):
     try:
         puts(command["name"], "purple")
@@ -73,6 +78,7 @@ def exec(command):
         if result.returncode == 0:
             output = result.stdout
             wrapped_output = wrap(output)
+            logfile(wrapped_output)
             print(wrapped_output)
         else:
             puts(f"Error: {result.stderr}", "red")
