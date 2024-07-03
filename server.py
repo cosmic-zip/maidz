@@ -16,12 +16,12 @@ class HttpHandler(BaseHTTPRequestHandler):
         log["keys"] = dict(captured_value)
         print("captured_value", captured_value)
 
-        parsed = json.dumps(log, indent=4, sort_keys=True)
+        parsed = json.dumps(log, sort_keys=True)
         logging.info(parsed)
 
-        f = open("apron/output/mitm_log.jsonl", "a")
-        f.write(f"{parsed}\n")
-        f.close()
+        with open("apron/output/mitm_log.jsonl", "a") as f
+            f.write(f"{parsed}\n")
+            f.close()
 
     def set_response(self):
         self.send_response(200)
@@ -53,7 +53,7 @@ class HttpHandler(BaseHTTPRequestHandler):
         self.set_response()
         self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
 
-def run(server_class=HTTPServer, handler_class=HttpHandler, address="localhost" port=8000):
+def run(server_class=HTTPServer, handler_class=HttpHandler, address="localhost", port=8000):
     logging.basicConfig(level=logging.INFO)
     server_address = (address, port)
     httpd = server_class(server_address, handler_class)

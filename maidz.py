@@ -20,6 +20,7 @@
 
 
 import json, os, sys, time, re, subprocess, platform
+from datetime import datetime
 
 def banner():
     os.system("chafa apron/assets/sakuya_izayoi.png")
@@ -65,21 +66,31 @@ def wrap(text, width=160):
         wrapped_lines.append(line)
     return '\n'.join(wrapped_lines)
 
-def logfile(log):
+def logfile(command: dict):
+
+    log = {
+        "name": command["name"],
+        "origin": command["command"],
+        "output": command["output"],
+        "datetime": str(datetime.now()),
+    }
+
     with open('apron/output/maid_exec_doc.jsonl', 'a') as f:
-        f.write(log)
+        parsed = json.dumps(log, sort_keys=True)
+        f.write(f"{parsed}\n")
         f.close()
 
 def exec(command):
     try:
+        log = {}
         puts(command["name"], "purple")
         result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
         
         if result.returncode == 0:
             output = result.stdout
-            wrapped_output = wrap(output)
-            logfile(wrapped_output)
-            print(wrapped_output)
+            command["output"] = wrap(output)
+            logfile(command)
+            print( command["output"])
         else:
             puts(f"Error: {result.stderr}", "red")
     except Exception as err:
@@ -262,5 +273,5 @@ def shell(args):
 if __name__ == "__main__":
     try:
         shell(sys.argv)
-    except KeyboardInterrupt:
-        pass
+    except Exception as err:
+        puts(str(err), "red")
