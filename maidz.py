@@ -25,12 +25,13 @@ from core.mtop import mtop
 from core.core import *
 from core.server import mint_server
 from core.extras import *
-
+from plugins.plugins import expo
 
 def shell(args):
 
     if len(args) < 2:
         init_text()
+        return 0
 
     DATA_BANK = import_bank()
 
@@ -43,6 +44,8 @@ def shell(args):
             mint_server(args)
         case "map.dns":
             exec_batch(DATA_BANK["dns"], args)
+        case "expo":
+            expo(args)
         case _:
             q = query(DATA_BANK["general"], args)
             return exec(q)
