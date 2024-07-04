@@ -43,6 +43,7 @@ def banner():
         """
     )
 
+
 def import_bank():
     try:
         with open("apron/assets/bank.json", "r") as bank:
@@ -67,14 +68,16 @@ def puts(string: str, color: str = ""):
         emoji = color_emojis.get(color)
     print(f"\033[1m{emoji} {string}\033[0m")
 
+
 def wrap(text, width=160):
     wrapped_lines = []
-    for line in text.split('\n'):
+    for line in text.split("\n"):
         while len(line) > width:
             wrapped_lines.append(line[:width])
             line = line[width:]
         wrapped_lines.append(line)
-    return '\n'.join(wrapped_lines)
+    return "\n".join(wrapped_lines)
+
 
 def logfile(command: dict):
 
@@ -85,26 +88,30 @@ def logfile(command: dict):
         "datetime": str(datetime.now()),
     }
 
-    with open('apron/output/maid_exec_doc.jsonl', 'a') as f:
+    with open("apron/output/maid_exec_doc.jsonl", "a") as f:
         parsed = json.dumps(log, sort_keys=True)
         f.write(f"{parsed}\n")
         f.close()
+
 
 def exec(command):
     try:
         log = {}
         puts(command["name"], "purple")
-        result = subprocess.run(command["command"], shell=True, capture_output=True, text=True)
-        
+        result = subprocess.run(
+            command["command"], shell=True, capture_output=True, text=True
+        )
+
         if result.returncode == 0:
             output = result.stdout
             command["output"] = wrap(output)
             logfile(command)
-            print( command["output"])
+            print(command["output"])
         else:
             puts(f"Error: {result.stderr}", "red")
     except Exception as err:
         puts(str(err), "red")
+
 
 def key_value(term: str, args: list):
 
@@ -150,7 +157,7 @@ def query(data: dict, args: list):
     return {"name": name, "command": content, "description": description}
 
 
-def exec_batch(chunk: dict, args: list, delay = None):
+def exec_batch(chunk: dict, args: list, delay=None):
 
     for q in chunk:
         out = query(chunk, args)
@@ -179,40 +186,42 @@ def install_deps():
         puts(f"PKG :: {pkg}")
         os.system(f"sudo apt install {pkg} -y")
 
+
 def get_ram_usage():
-    with open('/proc/meminfo', 'r') as f:
+    with open("/proc/meminfo", "r") as f:
         lines = f.readlines()
     mem_total = int(lines[0].split()[1])
     mem_free = int(lines[1].split()[1])
     mem_available = int(lines[2].split()[1])
     return mem_total, mem_free, mem_available
 
+
 def get_desktop_environment():
-    desktop_session = os.environ.get('DESKTOP_SESSION')
+    desktop_session = os.environ.get("DESKTOP_SESSION")
     if desktop_session:
-        if desktop_session == 'ubuntu':
-            return 'GNOME'
+        if desktop_session == "ubuntu":
+            return "GNOME"
         return desktop_session
-    elif os.environ.get('GNOME_DESKTOP_SESSION_ID'):
-        return 'GNOME'
-    elif os.environ.get('KDE_FULL_SESSION'):
-        return 'KDE'
-    elif os.environ.get('XDG_CURRENT_DESKTOP'):
-        return os.environ.get('XDG_CURRENT_DESKTOP')
+    elif os.environ.get("GNOME_DESKTOP_SESSION_ID"):
+        return "GNOME"
+    elif os.environ.get("KDE_FULL_SESSION"):
+        return "KDE"
+    elif os.environ.get("XDG_CURRENT_DESKTOP"):
+        return os.environ.get("XDG_CURRENT_DESKTOP")
     else:
-        return 'Unknown'
+        return "Unknown"
 
 
 def mtop():
 
-    with open('/proc/loadavg', 'r') as f:
+    with open("/proc/loadavg", "r") as f:
         load_avg = f.readline().strip().split()[:3]
     cpu_load = tuple(float(x) for x in load_avg)
 
     mem_total, mem_free, mem_available = get_ram_usage()
     os_name = platform.system()
     kernel_version = platform.release()
-    shell = os.environ.get('SHELL')
+    shell = os.environ.get("SHELL")
     desktop_environment = get_desktop_environment()
 
     var = f"""
@@ -268,7 +277,7 @@ class HttpHandler(BaseHTTPRequestHandler):
 
     def set_response(self):
         self.send_response(200)
-        self.send_header('Content-type', 'text/html')
+        self.send_header("Content-type", "text/html")
         self.end_headers()
 
     def do_GET(self):
@@ -280,27 +289,30 @@ class HttpHandler(BaseHTTPRequestHandler):
             }
         )
         self.set_response()
-        self.wfile.write("GET request for {}".format(self.path).encode('utf-8'))
+        self.wfile.write("GET request for {}".format(self.path).encode("utf-8"))
 
     def do_POST(self):
-        content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
-        post_data = self.rfile.read(content_length) # <--- Gets the data itself
+        content_length = int(
+            self.headers["Content-Length"]
+        )  # <--- Gets the size of data
+        post_data = self.rfile.read(content_length)  # <--- Gets the data itself
         self.maid_log_for_me(
             {
                 "type": "POST",
                 "path": str(self.path),
                 "headers": str(self.headers),
-                "body": post_data.decode('utf-8'),
+                "body": post_data.decode("utf-8"),
             }
         )
         self.set_response()
-        self.wfile.write("POST request for {}".format(self.path).encode('utf-8'))
+        self.wfile.write("POST request for {}".format(self.path).encode("utf-8"))
+
 
 def mint_server(args):
-    server_class=HTTPServer 
-    handler_class=HttpHandler
-    address="localhost"
-    port=8000
+    server_class = HTTPServer
+    handler_class = HttpHandler
+    address = "localhost"
+    port = 8000
 
     if key_value("address", args):
         address = key_value("address", args)
@@ -317,6 +329,7 @@ def mint_server(args):
     except KeyboardInterrupt:
         httpd.server_close()
         puts(f"Stopping server :: {address}:{port}", "green")
+
 
 def shell(args):
 
@@ -339,7 +352,7 @@ def shell(args):
     elif args[1] == "query":
         data = import_bank()
         query(data["general"], args)
-    elif args[1] == "mitm.server":    
+    elif args[1] == "mitm.server":
         mint_server(args)
     else:
         data = import_bank()
