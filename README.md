@@ -1,4 +1,4 @@
-![alt](./apron/assets/sakuya_izayoi.png)
+![alt](./data/assets/sakuya_izayoi.png)
 
 # MaidZ
 
