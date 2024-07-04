@@ -250,19 +250,21 @@ def maidztop():
 class HttpHandler(BaseHTTPRequestHandler):
     def maid_log_for_me(self, log):
         log["datetime"] = str(datetime.now())
-
         url = log["path"]
         parsed_url = urlparse(url)
         captured_value = parse_qs(parsed_url.query)
         log["keys"] = dict(captured_value)
-        print("captured_value", captured_value)
-
         parsed = json.dumps(log, sort_keys=True)
-        logging.info(parsed)
 
         with open("apron/output/mitm_log.jsonl", "a") as f:
             f.write(f"{parsed}\n")
             f.close()
+
+        puts(f"captured values: {captured_value}", "yellow")
+        print("")
+        parsed = json.dumps(log, sort_keys=True, indent=4)
+        puts(parsed, "yellow")
+        print("")
 
     def set_response(self):
         self.send_response(200)
