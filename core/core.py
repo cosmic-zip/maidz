@@ -60,7 +60,6 @@ def logfile(command: dict):
 
 def exec(command):
     try:
-
         if not command:
             exit()
 
@@ -129,11 +128,9 @@ def exec_batch(chunk: dict, args: list, delay=None):
 
     for q in chunk:
         args[1] = q["name"]
-        print(args[1])
-        
-        out = query(chunk, args)
+        out = query([q], args)
+        exec(out)
         if delay:
             time.sleep(delay)
-        print(out)
 
     return 0
