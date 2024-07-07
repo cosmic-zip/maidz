@@ -5,6 +5,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
 from core.core import puts, key_value
 
+
 class HttpHandler(BaseHTTPRequestHandler):
     def maid_log_for_me(self, log):
         log["datetime"] = str(datetime.now())

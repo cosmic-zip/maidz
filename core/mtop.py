@@ -3,6 +3,7 @@ import sys
 import platform
 from core.core import puts
 
+
 def get_ram_usage():
     with open("/proc/meminfo", "r") as f:
         lines = f.readlines()
@@ -26,6 +27,7 @@ def get_desktop_environment():
         return os.environ.get("XDG_CURRENT_DESKTOP")
     else:
         return "Unknown"
+
 
 def mtop():
 
@@ -69,4 +71,3 @@ def mtop():
     """
 
     puts(var)
-

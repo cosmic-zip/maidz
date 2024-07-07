@@ -1,4 +1,5 @@
-from core.core import import_bank
+from core.core import import_bank, puts
+
 
 def init_text():
     print(
@@ -10,8 +11,8 @@ def init_text():
         """
     )
 
-def manual(verbose: bool = False):
 
+def manual(verbose: bool = False):
     data = import_bank()
     data = data["general"]
 

@@ -1,7 +1,9 @@
 from core.core import puts
 
+
 def some(args):
     print(args)
+
 
 def expo_example(args):
 
