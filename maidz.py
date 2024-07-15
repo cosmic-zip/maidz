@@ -21,11 +21,12 @@
 
 import sys
 
-from core.mtop import mtop
 from core.core import *
-from core.server import mint_server
 from core.extras import *
+from core.mtop import mtop
+from core.server import mint_server
 from plugins.plugins import expo
+
 
 def shell(args):
 
@@ -37,7 +38,7 @@ def shell(args):
 
     match args[1]:
         case "manual":
-            manual(true)
+            manual(True)
         case "mtop":
             mtop()
         case "mitm.server":

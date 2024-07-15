@@ -60,6 +60,9 @@ def logfile(command: dict):
 
 def exec(command):
     try:
+        if not command:
+            exit()
+
         log = {}
         puts(command["name"], "purple")
         result = subprocess.run(
@@ -74,7 +77,7 @@ def exec(command):
         else:
             puts(f"Error: {result.stderr}", "red")
     except Exception as err:
-        puts(str(err), "red")
+        puts(f"Command not found in bank.json :: {err} :: ", "orange")
 
 
 def key_value(term: str, args: list):
@@ -124,8 +127,10 @@ def query(data: dict, args: list):
 def exec_batch(chunk: dict, args: list, delay=None):
 
     for q in chunk:
-        out = query(chunk, args)
+        args[1] = q["name"]
+        out = query([q], args)
+        exec(out)
         if delay:
             time.sleep(delay)
-        print(out)
 
+    return 0

@@ -382,55 +382,68 @@
     "dns": [
         {
             "name": "dns.a",
-            "command": "dig @@domain A +short"
+            "command": "dig @@domain A +short",
+            "description": "Retrieves the IPv4 address (A record) associated with the domain."
         },
         {
             "name": "dns.aaaa",
-            "command": "dig @@domain AAAA +short"
+            "command": "dig @@domain AAAA +short",
+            "description": "Retrieves the IPv6 address (AAAA record) associated with the domain."
         },
         {
             "name": "dns.cname",
-            "command": "dig @@domain CNAME +short"
+            "command": "dig @@domain CNAME +short",
+            "description": "Retrieves the canonical name (CNAME record) associated with the domain."
         },
         {
             "name": "dns.mx",
-            "command": "dig @@domain MX +short"
+            "command": "dig @@domain MX +short",
+            "description": "Retrieves the mail exchange (MX record) associated with the domain."
         },
         {
             "name": "dns.ns",
-            "command": "dig @@domain NS +short"
+            "command": "dig @@domain NS +short",
+            "description": "Retrieves the name servers (NS records) associated with the domain."
         },
         {
             "name": "dns.txt",
-            "command": "dig @@domain TXT +short"
+            "command": "dig @@domain TXT +short",
+            "description": "Retrieves the text (TXT record) associated with the domain."
         },
         {
             "name": "dns.soa",
-            "command": "dig @@domain SOA +short"
+            "command": "dig @@domain SOA +short",
+            "description": "Retrieves the start of authority (SOA record) associated with the domain."
         },
         {
             "name": "dns.srv",
-            "command": "dig @@domain SRV +short"
+            "command": "dig @@domain SRV +short",
+            "description": "Retrieves the service (SRV record) associated with the domain."
         },
         {
             "name": "dns.ptr",
-            "command": "dig @@domain PTR +short"
+            "command": "dig @@domain PTR +short",
+            "description": "Retrieves the pointer (PTR record) associated with the domain."
         },
         {
             "name": "dns.dnskey",
-            "command": "dig @@domain DNSKEY +short"
+            "command": "dig @@domain DNSKEY +short",
+            "description": "Retrieves the DNS key (DNSKEY record) associated with the domain."
         },
         {
             "name": "extras.whois",
-            "command": "whois @@domain"
+            "command": "whois @@domain",
+            "description": "Retrieves the WHOIS information for the domain."
         },
         {
             "name": "extras.robots.txt",
-            "command": "curl -sS -L https://@@domain/robots.txt"
+            "command": "curl -sS -L https://@@domain/robots.txt",
+            "description": "Retrieves the contents of the robots.txt file for the domain."
         },
         {
             "name": "extras.sitemap",
-            "command": "curl -sS -L https://@@domain/sitemap.xml"
+            "command": "curl -sS -L https://@@domain/sitemap.xml",
+            "description": "Retrieves the contents of the sitemap.xml file for the domain."
         }
     ],
     "deps": [
